@@ -47,10 +47,15 @@ jobs:
     - name: Run Publisher Agent (Generate OGP Image)
       run: python -m agent_publisher.ogp_generator
 
+    - name: Send Discord Notification
+      env:
+        DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+      run: python -m agent_publisher.discord_notifier
+
     - name: Commit and Push Drafts
       run: |
         git config --global user.name 'AI Agent Bot'
         git config --global user.email 'bot@example.com'
         git add drafts/ data/
-        git commit -m "🤖 AI Agent: Created new content [skip ci]" || echo "No changes to commit"
+        git commit -m "AI Agent: Created new content [skip ci]" || echo "No changes to commit"
         git push
