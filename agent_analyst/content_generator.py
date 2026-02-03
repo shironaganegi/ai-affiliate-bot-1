@@ -7,6 +7,7 @@ from datetime import datetime
 from dotenv import load_dotenv
 import warnings
 import sys
+from agent_analyst.failure_miner import mine_failures
 
 # Suppress deprecation warnings
 warnings.filterwarnings("ignore", category=FutureWarning)
@@ -69,6 +70,9 @@ def generate_article(tool_data):
     print(f"Analyzing {name}...")
     readme_text = get_readme_content(url)
     
+    # NEW: Fetch 'Failure Stories' from Reddit
+    failure_context = mine_failures(name)
+    
     prompt = f"""
     You are a professional Tech Writer specializing in AI tools. 
     Write a high-quality, engaging blog post draft in JAPANESE about the following new AI tool.
@@ -83,6 +87,9 @@ def generate_article(tool_data):
     - Current Stars: {stars} (Trending now!)
     - Technical Documentation (Context):
     {readme_text}
+    
+    - User Feedback & Known Issues (Social Signal):
+    {failure_context}
 
     Structure Requirements:
     1. **Catchy Title**: Include "AI" and a benefit (e.g., "Productivity x10").
@@ -90,7 +97,7 @@ def generate_article(tool_data):
     3. **What is it?**: Explain simply for beginners.
     4. **Key Features**: strict bullet points based on the README.
     5. **How to Install**: Python pip command or similar.
-    6. **Pro's & Con's (Honest Review)**: Imagine you used it. What are the likely limitations?
+    6. **Pro's & Con's (Honest Review)**: Use the "User Feedback" section to mention real concerns or alternatives mentioned on Reddit. Be honest about downsides.
     7. **Conclusion**: Who should use this?
 
     Output Format: Markdown.

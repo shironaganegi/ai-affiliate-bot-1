@@ -27,17 +27,25 @@ jobs:
         pip install -r requirements.txt
     
     - name: Run Watcher Agent (Fetch Trends)
-      run: python agent_watcher/fetch_trends.py
+      run: python -m agent_watcher.fetch_trends
       
     - name: Run Analyst Agent (Generate Draft)
       env:
         GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-      run: python agent_analyst/content_generator.py
+      run: python -m agent_analyst.content_generator
       
     - name: Run Publisher Agent (Generate Tweets)
       env:
         GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-      run: python agent_publisher/social_generator.py
+      run: python -m agent_publisher.social_generator
+
+    - name: Install Playwright Browsers
+      run: |
+        python -m pip install playwright
+        python -m playwright install chromium
+
+    - name: Run Publisher Agent (Generate OGP Image)
+      run: python -m agent_publisher.ogp_generator
 
     - name: Commit and Push Drafts
       run: |
