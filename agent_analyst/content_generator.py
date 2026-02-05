@@ -2,6 +2,9 @@ from bs4 import BeautifulSoup
 from datetime import datetime, timedelta
 import warnings
 import sys
+import os
+import json
+import google.generativeai as genai
 from agent_analyst.failure_miner import mine_failures
 from agent_analyst.ad_inventory import AD_CAMPAIGNS
 from agent_analyst.product_recommender import search_related_items
