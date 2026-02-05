@@ -1,12 +1,20 @@
 baseURL = 'https://shironaganegi.github.io/ai-affiliate-bot-1/'
 languageCode = 'ja'
-title = 'AI Affiliate Lab'
+title = 'TechTrend Watch'
 theme = 'PaperMod'
 
 [params]
   defaultTheme = "auto"
-  description = "最新AIツールの活用法・レビューをAI編集長が毎日お届けする実験ラボ。"
-  author = "AI Editor"
+  description = "AIが厳選する、今日の最新技術トレンド"
+  author = "TechTrend Observer"
+  
+  [params.homeInfoParams]
+    Title = "TechTrend Watch 🚀"
+    Content = "世界中のGitHub、HackerNews、Qiitaから、今注目すべき技術トレンドをAIが毎日発掘・要約してお届けします。"
+
+  [[params.socialIcons]]
+     name = "github"
+     url = "https://github.com/shironaganegi/ai-affiliate-bot-1"
   ShowReadingTime = true
   ShowShareButtons = true
   ShowPostNavLinks = true
