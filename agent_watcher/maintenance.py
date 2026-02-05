@@ -43,10 +43,10 @@ def clean_old_files(directory, days=30):
 if __name__ == "__main__":
     # Define directories to clean
     base_dir = os.path.join(os.path.dirname(__file__), "..")
-    drafts_dir = os.path.join(base_dir, "drafts")
+    articles_dir = os.path.join(base_dir, "articles")
     data_dir = os.path.join(base_dir, "data")
     images_dir = os.path.join(data_dir, "images")
 
-    # Clean drafts and generated images older than 30 days
-    clean_old_files(drafts_dir, days=30)
+    # Clean articles and generated images older than 30 days
+    clean_old_files(articles_dir, days=30)
     clean_old_files(images_dir, days=30)

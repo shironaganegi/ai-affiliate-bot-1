@@ -148,6 +148,26 @@ def generate_article(tool_data):
         traceback.print_exc()
         return f"# {name}\n\n記事の生成中にエラーが発生しました。申し訳ありません。\nエラー詳細: {str(e)}"
 
+def generate_zenn_frontmatter(title, tool_name, source):
+    """
+    Generates Zenn compatible YAML frontmatter.
+    """
+    emojis = ["🤖", "🚀", "🛠️", "💻", "💡", "🔥", "📈", "🔍"]
+    topics = ["AI", "OpenSource", "Tech", "Programming"]
+    if source == "github": topics.append("GitHub")
+    if "python" in tool_name.lower(): topics.append("Python")
+    
+    frontmatter = f"""---
+title: "{title}"
+emoji: "{random.choice(emojis)}"
+type: "tech" # tech: 技術記事 / idea: アイデア
+topics: {json.dumps(topics)}
+published: false # trueで即時公開 / falseで下書き
+---
+
+"""
+    return frontmatter
+
 if __name__ == "__main__":
     # 1. Load the latest trends data
     data_dir = os.path.join(os.path.dirname(__file__), "..", "data")
@@ -189,17 +209,29 @@ if __name__ == "__main__":
     print(f"Selected Tool: {top_tool['name']} (Source: {top_tool.get('source')})")
     
     # 3. Generate Draft
-    draft_content = generate_article(top_tool)
+    body_content = generate_article(top_tool)
     
-    # 4. Save Draft
-    timestamp = datetime.now().strftime("%Y%m%d_%H%M")
-    safe_name = top_tool['name'].replace(" ", "_")
-    draft_filename = f"draft_{timestamp}_{safe_name}.md"
-    draft_path = os.path.join(os.path.dirname(__file__), "..", "drafts", draft_filename)
+    # 4. Extract title for frontmatter
+    article_title = "New AI Tool: " + top_tool['name']
+    for line in body_content.split("\n"):
+        if line.startswith("# "):
+            article_title = line.replace("# ", "").replace('"', '\\"')
+            break
+            
+    frontmatter = generate_zenn_frontmatter(article_title, top_tool['name'], top_tool.get('source'))
+    final_content = frontmatter + body_content
     
-    with open(draft_path, 'w', encoding='utf-8') as f:
-        f.write(draft_content)
+    # 5. Save to /articles with Zenn-compatible slug (14 random chars)
+    import string
+    slug = ''.join(random.choices(string.ascii_lowercase + string.digits, k=14))
+    articles_dir = os.path.join(os.path.dirname(__file__), "..", "articles")
+    os.makedirs(articles_dir, exist_ok=True)
+    
+    file_path = os.path.join(articles_dir, f"{slug}.md")
+    
+    with open(file_path, 'w', encoding='utf-8') as f:
+        f.write(final_content)
         
-    print(f"Draft saved to: {draft_path}")
+    print(f"Zenn article saved to: {file_path}")
     print("-" * 30)
     # print(draft_content[:500] + "...\n(truncated)") # Disable printing to avoid console encoding errors

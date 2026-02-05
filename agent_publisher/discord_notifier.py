@@ -8,32 +8,39 @@ def send_discord_notification(webhook_url, draft_path=None):
     """
     Sends a notification to Discord when a new draft is created.
     """
-    # Find the latest draft if not specified
+    # Find the latest article if not specified
     if not draft_path:
-        draft_dir = os.path.join(os.path.dirname(__file__), "..", "drafts")
-        files = sorted(glob.glob(os.path.join(draft_dir, "draft_*.md")), key=os.path.getmtime, reverse=True)
+        articles_dir = os.path.join(os.path.dirname(__file__), "..", "articles")
+        files = sorted(glob.glob(os.path.join(articles_dir, "*.md")), key=os.path.getmtime, reverse=True)
         if not files:
-            print("No drafts found to notify about.")
+            print("No articles found to notify about.")
             return
         draft_path = files[0]
     
     filename = os.path.basename(draft_path)
     
-    # Extract tool name from filename
-    try:
-        tool_name = filename.split("_", 3)[3].replace(".md", "")
-    except IndexError:
-        tool_name = "Unknown Tool"
-    
-    # Read first few lines for preview
+    # Read content to extract title and metadata
     with open(draft_path, 'r', encoding='utf-8') as f:
         content = f.read()
-        # Get the title (first # heading)
-        title = "New Draft Ready"
+
+    # Naive extraction from frontmatter or Markdown
+    title = "New Article"
+    tool_name = "Tech Tool"
+    
+    # Try to find YAML title: "..."
+    import re
+    title_match = re.search(r'^title:\s*"(.*)"', content, re.MULTILINE)
+    if title_match:
+        title = title_match.group(1)
+    else:
+        # Fallback to # Heading
         for line in content.split("\n"):
             if line.startswith("# "):
                 title = line.replace("# ", "")
                 break
+    
+    # Using title as tool_name for simplicity in notification
+    tool_name = title.split(":")[0].strip()
     
     # Create Discord Embed message
     embed = {
