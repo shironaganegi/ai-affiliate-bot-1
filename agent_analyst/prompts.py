@@ -17,10 +17,12 @@ Requirements for "article":
 3. PR Notice: The very first line after the title must be `> ※本記事はプロモーションを含みます`.
 
 Requirements for "x_viral_post":
-- Designed to maximize engagement and clicks on X.
-- OPTIONAL: If a trending word from [{x_context}] is highly relevant to the topic, utilize it naturally. Do NOT force it if irrelevant.
-- Use formatting like bullet points, cliffhangers, or strong "Hooks".
-- Include 2-3 relevant hashtags.
+- STRICTLY under 100 characters (excluding URL/Tags).
+- Tone: Professional, Insightful, and clean (Avoid "Ya-bai", excessive exclamation marks, or clickbait style).
+- Emojis: Maximum 1 (e.g., 🚀 or 💡) used only if necessary.
+- Content: Summarize the core value or ask a thought-provoking question.
+- Format: Use line breaks effectively to create "white space" for readability.
+- Include 2 relevant hashtags (e.g. #Python #AI).
 - Must be in JAPANESE.
 
 Output MUST be a valid JSON with three fields:
