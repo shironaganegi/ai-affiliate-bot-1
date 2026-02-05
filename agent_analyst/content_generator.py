@@ -165,7 +165,9 @@ def inject_products(draft, keywords):
                 products_html = "".join(items)
                 break
                 
-    return draft.replace("{{RECOMMENDED_PRODUCTS}}", products_html).replace("{RECOMMENDED_PRODUCTS}", products_html)
+    # Wrap in markers for easy removal (e.g. for Qiita)
+    wrapped_products = f"\n<!-- AFFILIATE_START -->\n{products_html}\n<!-- AFFILIATE_END -->\n"
+    return draft.replace("{{RECOMMENDED_PRODUCTS}}", wrapped_products).replace("{RECOMMENDED_PRODUCTS}", wrapped_products)
 
 def append_footer_content(article, x_post):
     # Add Affiliate Campaign

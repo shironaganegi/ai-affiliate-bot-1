@@ -37,8 +37,14 @@ def clean_for_qiita(body, zenn_url):
     """
     # 1. Remove "PR" sections (often at the bottom)
     body = re.sub(r'\n### PR[\s\S]*', '', body)
+
+    # 2. Remove Affiliate Product Injection (Targeting the markers)
+    body = re.sub(r'<!-- AFFILIATE_START -->[\s\S]*?<!-- AFFILIATE_END -->', '', body)
     
-    # 2. Add canonical link to Zenn
+    # 3. Remove "Promotion" disclaimer (Since we removed the ads)
+    body = re.sub(r'> ※本記事はプロモーションを含みます\n?', '', body)
+    
+    # 4. Add canonical link to Zenn
     footer = f"\n\n---\n\n:::note\nこの記事は [Zennで公開された記事]({zenn_url}) の転載です。\n最新情報や詳細な設定方法はZennをご覧ください。\n:::\n"
     
     return body + footer
