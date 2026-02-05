@@ -5,10 +5,10 @@
     "owner": "thedotmack",
     "url": "https://github.com/thedotmack/claude-mem",
     "description": "A Claude Code plugin that automatically captures everything Claude does during your coding sessions, compresses it with AI (using Claude's agent-sdk), and injects relevant context back into future sessions.",
-    "stars": 23274,
+    "stars": 23278,
     "daily_stars": 2638,
     "language": "all",
-    "fetched_at": "2026-02-05T11:16:33.502459"
+    "fetched_at": "2026-02-05T11:24:03.005341"
   },
   {
     "source": "hacker_news",
@@ -19,7 +19,7 @@
     "stars": 1064,
     "daily_stars": 1064,
     "language": "tech",
-    "fetched_at": "2026-02-05T11:16:37.019762"
+    "fetched_at": "2026-02-05T11:24:08.146066"
   },
   {
     "source": "github",
@@ -27,10 +27,10 @@
     "owner": "obra",
     "url": "https://github.com/obra/superpowers",
     "description": "An agentic skills framework & software development methodology that works.",
-    "stars": 44924,
+    "stars": 44927,
     "daily_stars": 993,
     "language": "all",
-    "fetched_at": "2026-02-05T11:16:33.504238"
+    "fetched_at": "2026-02-05T11:24:03.007133"
   },
   {
     "source": "github",
@@ -38,10 +38,10 @@
     "owner": "anthropics",
     "url": "https://github.com/anthropics/skills",
     "description": "Public repository for Agent Skills",
-    "stars": 63629,
+    "stars": 63638,
     "daily_stars": 909,
     "language": "python",
-    "fetched_at": "2026-02-05T11:16:34.846656"
+    "fetched_at": "2026-02-05T11:24:04.211843"
   },
   {
     "source": "github",
@@ -49,10 +49,10 @@
     "owner": "bytedance",
     "url": "https://github.com/bytedance/UI-TARS-desktop",
     "description": "The Open-Source Multimodal AI Agent Stack: Connecting Cutting-Edge AI Models and Agent Infra",
-    "stars": 26404,
+    "stars": 26413,
     "daily_stars": 862,
     "language": "all",
-    "fetched_at": "2026-02-05T11:16:33.501359"
+    "fetched_at": "2026-02-05T11:24:03.004227"
   },
   {
     "source": "github",
@@ -60,10 +60,10 @@
     "owner": "openai",
     "url": "https://github.com/openai/skills",
     "description": "Skills Catalog for Codex",
-    "stars": 3990,
+    "stars": 3992,
     "daily_stars": 746,
     "language": "all",
-    "fetched_at": "2026-02-05T11:16:33.501848"
+    "fetched_at": "2026-02-05T11:24:03.004727"
   },
   {
     "source": "github",
@@ -71,10 +71,10 @@
     "owner": "j178",
     "url": "https://github.com/j178/prek",
     "description": "⚡ Better `pre-commit`, re-engineered in Rust",
-    "stars": 5309,
+    "stars": 5315,
     "daily_stars": 739,
     "language": "all",
-    "fetched_at": "2026-02-05T11:16:33.503060"
+    "fetched_at": "2026-02-05T11:24:03.005930"
   },
   {
     "source": "hacker_news",
@@ -85,7 +85,7 @@
     "stars": 359,
     "daily_stars": 359,
     "language": "tech",
-    "fetched_at": "2026-02-05T11:16:35.875886"
+    "fetched_at": "2026-02-05T11:24:05.703580"
   },
   {
     "source": "hacker_news",
@@ -96,7 +96,7 @@
     "stars": 289,
     "daily_stars": 289,
     "language": "tech",
-    "fetched_at": "2026-02-05T11:16:35.661095"
+    "fetched_at": "2026-02-05T11:24:05.515782"
   },
   {
     "source": "hacker_news",
@@ -104,10 +104,10 @@
     "owner": "WaitWaitWha",
     "url": "https://www.biometricupdate.com/202602/ice-seeks-industry-input-on-ad-tech-location-data-for-investigative-use",
     "description": "ICE seeks industry input on ad tech location data for investigative use",
-    "stars": 219,
-    "daily_stars": 219,
+    "stars": 220,
+    "daily_stars": 220,
     "language": "tech",
-    "fetched_at": "2026-02-05T11:16:37.365838"
+    "fetched_at": "2026-02-05T11:24:08.526295"
   },
   {
     "source": "hacker_news",
@@ -118,7 +118,7 @@
     "stars": 218,
     "daily_stars": 218,
     "language": "tech",
-    "fetched_at": "2026-02-05T11:16:36.039556"
+    "fetched_at": "2026-02-05T11:24:06.221104"
   },
   {
     "source": "github",
@@ -126,10 +126,10 @@
     "owner": "sgl-project",
     "url": "https://github.com/sgl-project/sglang",
     "description": "SGLang is a high-performance serving framework for large language models and multimodal models.",
-    "stars": 23304,
+    "stars": 23305,
     "daily_stars": 131,
     "language": "python",
-    "fetched_at": "2026-02-05T11:16:34.849238"
+    "fetched_at": "2026-02-05T11:24:04.214447"
   },
   {
     "source": "github",
@@ -140,7 +140,7 @@
     "stars": 15292,
     "daily_stars": 123,
     "language": "python",
-    "fetched_at": "2026-02-05T11:16:34.850164"
+    "fetched_at": "2026-02-05T11:24:04.215383"
   },
   {
     "source": "hacker_news",
@@ -148,109 +148,21 @@
     "owner": "evakhoury",
     "url": "https://github.com/MaxBittker/rs-sdk",
     "description": "RS-SDK: Drive RuneScape with Claude Code",
-    "stars": 111,
-    "daily_stars": 111,
+    "stars": 112,
+    "daily_stars": 112,
     "language": "tech",
-    "fetched_at": "2026-02-05T11:16:36.964406"
+    "fetched_at": "2026-02-05T11:24:07.936991"
   },
   {
     "source": "product_hunt",
-    "name": "GitHub Agent HQ",
+    "name": "Voxtral Transcribe 2 by Mistral",
     "owner": "ProductHunt",
-    "url": "https://www.producthunt.com/products/github",
-    "description": "\n            Run Claude, Codex & Copilot directly in GitHub & VS Code\n          \n\nDiscussion\n            |\n            Link\n",
+    "url": "https://www.producthunt.com/products/mistral-7b",
+    "description": "\n            Real-time speech-to-text with speaker diarization\n          \n\nDiscussion\n            |\n            Link\n",
     "stars": 0,
     "daily_stars": 100,
     "language": "saas",
-    "fetched_at": "2026-02-05T11:16:35.030223"
-  },
-  {
-    "source": "product_hunt",
-    "name": "Sylvian AI Forms",
-    "owner": "ProductHunt",
-    "url": "https://www.producthunt.com/products/sylvian-excel-agent",
-    "description": "\n            Never fill a PDF by hand again\n          \n\nDiscussion\n            |\n            Link\n",
-    "stars": 0,
-    "daily_stars": 100,
-    "language": "saas",
-    "fetched_at": "2026-02-05T11:16:35.030429"
-  },
-  {
-    "source": "product_hunt",
-    "name": "PopAir",
-    "owner": "ProductHunt",
-    "url": "https://www.producthunt.com/products/popair-the-native-ai-copilot-for-macos",
-    "description": "\n            Multi-model AI that works inside any app. Light & fast.\n          \n\nDiscussion\n            |\n            Link\n",
-    "stars": 0,
-    "daily_stars": 100,
-    "language": "saas",
-    "fetched_at": "2026-02-05T11:16:35.030624"
-  },
-  {
-    "source": "product_hunt",
-    "name": "Miro MCP",
-    "owner": "ProductHunt",
-    "url": "https://www.producthunt.com/products/miro",
-    "description": "\n            Turn code into visual docs, board context into code\n          \n\nDiscussion\n            |\n            Link\n",
-    "stars": 0,
-    "daily_stars": 100,
-    "language": "saas",
-    "fetched_at": "2026-02-05T11:16:35.030811"
-  },
-  {
-    "source": "product_hunt",
-    "name": "Supaboard",
-    "owner": "ProductHunt",
-    "url": "https://www.producthunt.com/products/supaboard-ai",
-    "description": "\n            Ask in plain English. Get accurate answers from your data\n          \n\nDiscussion\n            |\n            Link\n",
-    "stars": 0,
-    "daily_stars": 100,
-    "language": "saas",
-    "fetched_at": "2026-02-05T11:16:35.031016"
-  },
-  {
-    "source": "product_hunt",
-    "name": "Votap",
-    "owner": "ProductHunt",
-    "url": "https://www.producthunt.com/products/votap",
-    "description": "\n            A platform for the world to vote on political leaders\n          \n\nDiscussion\n            |\n            Link\n",
-    "stars": 0,
-    "daily_stars": 100,
-    "language": "saas",
-    "fetched_at": "2026-02-05T11:16:35.031204"
-  },
-  {
-    "source": "product_hunt",
-    "name": "SessionCast",
-    "owner": "ProductHunt",
-    "url": "https://www.producthunt.com/products/sessioncast",
-    "description": "\n            CLI control to monitor and work with Claude Code remotely\n          \n\nDiscussion\n            |\n            Link\n",
-    "stars": 0,
-    "daily_stars": 100,
-    "language": "saas",
-    "fetched_at": "2026-02-05T11:16:35.031389"
-  },
-  {
-    "source": "product_hunt",
-    "name": "Therapist AI",
-    "owner": "ProductHunt",
-    "url": "https://www.producthunt.com/products/therapist-ai-time-for-what-matters",
-    "description": "\n            Built by Therapists, For Therapists\n          \n\nDiscussion\n            |\n            Link\n",
-    "stars": 0,
-    "daily_stars": 100,
-    "language": "saas",
-    "fetched_at": "2026-02-05T11:16:35.031576"
-  },
-  {
-    "source": "product_hunt",
-    "name": "AI Bulk Analysis",
-    "owner": "ProductHunt",
-    "url": "https://www.producthunt.com/products/ai-bulk-analysis",
-    "description": "\n            Turn contracts into instant, actionable intelligence\n          \n\nDiscussion\n            |\n            Link\n",
-    "stars": 0,
-    "daily_stars": 100,
-    "language": "saas",
-    "fetched_at": "2026-02-05T11:16:35.031764"
+    "fetched_at": "2026-02-05T11:24:04.414528"
   },
   {
     "source": "product_hunt",
@@ -261,7 +173,95 @@
     "stars": 0,
     "daily_stars": 100,
     "language": "saas",
-    "fetched_at": "2026-02-05T11:16:35.032005"
+    "fetched_at": "2026-02-05T11:24:04.414736"
+  },
+  {
+    "source": "product_hunt",
+    "name": "Votap",
+    "owner": "ProductHunt",
+    "url": "https://www.producthunt.com/products/votap",
+    "description": "\n            A platform for the world to vote on political leaders\n          \n\nDiscussion\n            |\n            Link\n",
+    "stars": 0,
+    "daily_stars": 100,
+    "language": "saas",
+    "fetched_at": "2026-02-05T11:24:04.414925"
+  },
+  {
+    "source": "product_hunt",
+    "name": "GitHub Agent HQ",
+    "owner": "ProductHunt",
+    "url": "https://www.producthunt.com/products/github",
+    "description": "\n            Run Claude, Codex & Copilot directly in GitHub & VS Code\n          \n\nDiscussion\n            |\n            Link\n",
+    "stars": 0,
+    "daily_stars": 100,
+    "language": "saas",
+    "fetched_at": "2026-02-05T11:24:04.415143"
+  },
+  {
+    "source": "product_hunt",
+    "name": "Sylvian AI Forms",
+    "owner": "ProductHunt",
+    "url": "https://www.producthunt.com/products/sylvian-excel-agent",
+    "description": "\n            Never fill a PDF by hand again\n          \n\nDiscussion\n            |\n            Link\n",
+    "stars": 0,
+    "daily_stars": 100,
+    "language": "saas",
+    "fetched_at": "2026-02-05T11:24:04.415334"
+  },
+  {
+    "source": "product_hunt",
+    "name": "The new v0",
+    "owner": "ProductHunt",
+    "url": "https://www.producthunt.com/products/v0",
+    "description": "\n            Full stack vibe coding platform. Created by Vercel.\n          \n\nDiscussion\n            |\n            Link\n",
+    "stars": 0,
+    "daily_stars": 100,
+    "language": "saas",
+    "fetched_at": "2026-02-05T11:24:04.415519"
+  },
+  {
+    "source": "product_hunt",
+    "name": "Therapist AI",
+    "owner": "ProductHunt",
+    "url": "https://www.producthunt.com/products/therapist-ai-time-for-what-matters",
+    "description": "\n            Built by Therapists, For Therapists\n          \n\nDiscussion\n            |\n            Link\n",
+    "stars": 0,
+    "daily_stars": 100,
+    "language": "saas",
+    "fetched_at": "2026-02-05T11:24:04.415706"
+  },
+  {
+    "source": "product_hunt",
+    "name": "Webflow AI site builder",
+    "owner": "ProductHunt",
+    "url": "https://www.producthunt.com/products/webflow",
+    "description": "\n            Turn a prompt into a production-ready site with Webflow\n          \n\nDiscussion\n            |\n            Link\n",
+    "stars": 0,
+    "daily_stars": 100,
+    "language": "saas",
+    "fetched_at": "2026-02-05T11:24:04.415891"
+  },
+  {
+    "source": "product_hunt",
+    "name": "AutoBandStudio",
+    "owner": "ProductHunt",
+    "url": "https://www.producthunt.com/products/autobandstudio",
+    "description": "\n            AI that turns your melody into a full arrangement\n          \n\nDiscussion\n            |\n            Link\n",
+    "stars": 0,
+    "daily_stars": 100,
+    "language": "saas",
+    "fetched_at": "2026-02-05T11:24:04.416092"
+  },
+  {
+    "source": "product_hunt",
+    "name": "AI Bulk Analysis",
+    "owner": "ProductHunt",
+    "url": "https://www.producthunt.com/products/ai-bulk-analysis",
+    "description": "\n            Turn contracts into instant, actionable intelligence\n          \n\nDiscussion\n            |\n            Link\n",
+    "stars": 0,
+    "daily_stars": 100,
+    "language": "saas",
+    "fetched_at": "2026-02-05T11:24:04.416279"
   },
   {
     "source": "github",
@@ -269,10 +269,10 @@
     "owner": "chenyme",
     "url": "https://github.com/chenyme/grok2api",
     "description": "基于 FastAPI 重构的 Grok2API，全面适配最新 Web 调用格式，支持流/非流式对话、图像生成/编辑、深度思考，号池并发与自动负载均衡一体化。",
-    "stars": 1012,
+    "stars": 1013,
     "daily_stars": 98,
     "language": "python",
-    "fetched_at": "2026-02-05T11:16:34.846195"
+    "fetched_at": "2026-02-05T11:24:04.211381"
   },
   {
     "source": "github",
@@ -283,7 +283,7 @@
     "stars": 263,
     "daily_stars": 79,
     "language": "all",
-    "fetched_at": "2026-02-05T11:16:33.506530"
+    "fetched_at": "2026-02-05T11:24:03.009461"
   },
   {
     "source": "github",
@@ -291,10 +291,10 @@
     "owner": "topoteretes",
     "url": "https://github.com/topoteretes/cognee",
     "description": "Memory for AI Agents in 6 lines of code",
-    "stars": 11705,
+    "stars": 11706,
     "daily_stars": 69,
     "language": "all",
-    "fetched_at": "2026-02-05T11:16:33.503643"
+    "fetched_at": "2026-02-05T11:24:03.006536"
   },
   {
     "source": "github",
@@ -305,7 +305,7 @@
     "stars": 1388,
     "daily_stars": 56,
     "language": "python",
-    "fetched_at": "2026-02-05T11:16:34.847136"
+    "fetched_at": "2026-02-05T11:24:04.212314"
   },
   {
     "source": "github",
@@ -316,7 +316,7 @@
     "stars": 19224,
     "daily_stars": 45,
     "language": "all",
-    "fetched_at": "2026-02-05T11:16:33.506091"
+    "fetched_at": "2026-02-05T11:24:03.009014"
   },
   {
     "source": "github",
@@ -324,10 +324,10 @@
     "owner": "frappe",
     "url": "https://github.com/frappe/erpnext",
     "description": "Free and Open Source Enterprise Resource Planning (ERP)",
-    "stars": 31533,
+    "stars": 31534,
     "daily_stars": 41,
     "language": "python",
-    "fetched_at": "2026-02-05T11:16:34.848192"
+    "fetched_at": "2026-02-05T11:24:04.213376"
   },
   {
     "source": "qiita",
@@ -338,7 +338,7 @@
     "stars": 40,
     "daily_stars": 40,
     "language": "japanese",
-    "fetched_at": "2026-02-05T11:16:38.503302"
+    "fetched_at": "2026-02-05T11:24:10.029146"
   },
   {
     "source": "qiita",
@@ -349,7 +349,7 @@
     "stars": 40,
     "daily_stars": 40,
     "language": "japanese",
-    "fetched_at": "2026-02-05T11:16:38.503314"
+    "fetched_at": "2026-02-05T11:24:10.029159"
   },
   {
     "source": "qiita",
@@ -360,7 +360,7 @@
     "stars": 40,
     "daily_stars": 40,
     "language": "japanese",
-    "fetched_at": "2026-02-05T11:16:38.503321"
+    "fetched_at": "2026-02-05T11:24:10.029165"
   },
   {
     "source": "qiita",
@@ -371,7 +371,7 @@
     "stars": 40,
     "daily_stars": 40,
     "language": "japanese",
-    "fetched_at": "2026-02-05T11:16:38.503327"
+    "fetched_at": "2026-02-05T11:24:10.029172"
   },
   {
     "source": "qiita",
@@ -382,7 +382,7 @@
     "stars": 40,
     "daily_stars": 40,
     "language": "japanese",
-    "fetched_at": "2026-02-05T11:16:38.746249"
+    "fetched_at": "2026-02-05T11:24:10.297438"
   },
   {
     "source": "qiita",
@@ -393,7 +393,7 @@
     "stars": 40,
     "daily_stars": 40,
     "language": "japanese",
-    "fetched_at": "2026-02-05T11:16:38.746260"
+    "fetched_at": "2026-02-05T11:24:10.297452"
   },
   {
     "source": "qiita",
@@ -404,7 +404,7 @@
     "stars": 40,
     "daily_stars": 40,
     "language": "japanese",
-    "fetched_at": "2026-02-05T11:16:38.746266"
+    "fetched_at": "2026-02-05T11:24:10.297459"
   },
   {
     "source": "qiita",
@@ -415,7 +415,7 @@
     "stars": 40,
     "daily_stars": 40,
     "language": "japanese",
-    "fetched_at": "2026-02-05T11:16:38.746273"
+    "fetched_at": "2026-02-05T11:24:10.297465"
   },
   {
     "source": "qiita",
@@ -426,7 +426,7 @@
     "stars": 40,
     "daily_stars": 40,
     "language": "japanese",
-    "fetched_at": "2026-02-05T11:16:38.972138"
+    "fetched_at": "2026-02-05T11:24:10.543983"
   },
   {
     "source": "qiita",
@@ -437,7 +437,7 @@
     "stars": 40,
     "daily_stars": 40,
     "language": "japanese",
-    "fetched_at": "2026-02-05T11:16:38.972150"
+    "fetched_at": "2026-02-05T11:24:10.544011"
   },
   {
     "source": "qiita",
@@ -448,7 +448,7 @@
     "stars": 40,
     "daily_stars": 40,
     "language": "japanese",
-    "fetched_at": "2026-02-05T11:16:38.972157"
+    "fetched_at": "2026-02-05T11:24:10.544018"
   },
   {
     "source": "qiita",
@@ -459,7 +459,7 @@
     "stars": 40,
     "daily_stars": 40,
     "language": "japanese",
-    "fetched_at": "2026-02-05T11:16:38.972163"
+    "fetched_at": "2026-02-05T11:24:10.544024"
   },
   {
     "source": "github",
@@ -470,7 +470,7 @@
     "stars": 6867,
     "daily_stars": 37,
     "language": "python",
-    "fetched_at": "2026-02-05T11:16:34.848766"
+    "fetched_at": "2026-02-05T11:24:04.213965"
   },
   {
     "source": "github",
@@ -481,7 +481,7 @@
     "stars": 91305,
     "daily_stars": 35,
     "language": "all",
-    "fetched_at": "2026-02-05T11:16:33.505620"
+    "fetched_at": "2026-02-05T11:24:03.008540"
   },
   {
     "source": "github",
@@ -492,7 +492,7 @@
     "stars": 2012,
     "daily_stars": 32,
     "language": "python",
-    "fetched_at": "2026-02-05T11:16:34.850616"
+    "fetched_at": "2026-02-05T11:24:04.215843"
   },
   {
     "source": "github",
@@ -503,7 +503,7 @@
     "stars": 32271,
     "daily_stars": 31,
     "language": "all",
-    "fetched_at": "2026-02-05T11:16:33.505166"
+    "fetched_at": "2026-02-05T11:24:03.008081"
   },
   {
     "source": "github",
@@ -514,7 +514,7 @@
     "stars": 31278,
     "daily_stars": 23,
     "language": "all",
-    "fetched_at": "2026-02-05T11:16:33.504692"
+    "fetched_at": "2026-02-05T11:24:03.007605"
   },
   {
     "source": "github",
@@ -522,10 +522,10 @@
     "owner": "qodo-ai",
     "url": "https://github.com/qodo-ai/pr-agent",
     "description": "🚀 PR Agent - The Original Open-Source PR Reviewer, This repo is not the Qodo free tier! Try the free version on our website.",
-    "stars": 10061,
+    "stars": 10062,
     "daily_stars": 19,
     "language": "python",
-    "fetched_at": "2026-02-05T11:16:34.849694"
+    "fetched_at": "2026-02-05T11:24:04.214908"
   },
   {
     "source": "github",
@@ -536,6 +536,6 @@
     "stars": 8079,
     "daily_stars": 18,
     "language": "python",
-    "fetched_at": "2026-02-05T11:16:34.847718"
+    "fetched_at": "2026-02-05T11:24:04.212896"
   }
 ]
