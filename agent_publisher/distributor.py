@@ -129,6 +129,7 @@ def send_note_draft_to_discord(note_text):
     """Sends the note draft to Discord for manual posting."""
     webhook_url = os.getenv("DISCORD_WEBHOOK_URL")
     if not webhook_url:
+        print("WARNING: DISCORD_WEBHOOK_URL not found. Skipping note draft notification.")
         return
 
     payload = {
