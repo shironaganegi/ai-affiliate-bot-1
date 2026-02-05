@@ -40,6 +40,32 @@ def clean_old_files(directory, days=30):
 
     logging.info(f"Cleanup finished. Deleted {deleted_count} files.")
 
+def clean_error_files(directory):
+    """
+    Deletes files that contain error messages indicating generation failure.
+    """
+    if not os.path.exists(directory): return
+    
+    logging.info(f"Checking for failed articles in {directory}...")
+    deleted = 0
+    for filename in os.listdir(directory):
+        if not filename.endswith(".md"): continue
+        filepath = os.path.join(directory, filename)
+        
+        try:
+            with open(filepath, 'r', encoding='utf-8', errors='ignore') as f:
+                content = f.read()
+            
+            # Check for error signature
+            if "記事生成に失敗しました" in content or "ModelError" in content or "Quota exceeded" in content:
+                os.remove(filepath)
+                logging.warning(f"Deleted failed article: {filename}")
+                deleted += 1
+        except Exception as e:
+            logging.error(f"Error checking file {filename}: {e}")
+            
+    logging.info(f"Error cleanup finished. Deleted {deleted} failed files.")
+
 if __name__ == "__main__":
     # Define directories to clean
     base_dir = os.path.join(os.path.dirname(__file__), "..")
@@ -50,3 +76,7 @@ if __name__ == "__main__":
     # Clean articles and generated images older than 30 days
     clean_old_files(articles_dir, days=30)
     clean_old_files(images_dir, days=30)
+    
+    # Clean failed articles (both in internal storage and Hugo site)
+    clean_error_files(articles_dir)
+    clean_error_files(os.path.join(base_dir, "website", "content", "posts"))
