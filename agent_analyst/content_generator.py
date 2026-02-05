@@ -167,16 +167,26 @@ if __name__ == "__main__":
     # 2. Pick the Winner (Top Daily Stars)
     # Filter for items with daily_stars > 0
     candidates = [item for item in data if item.get('daily_stars', 0) > 0]
-    if not candidates:
-        candidates = data # fallback
-        
-    # Sort by daily_stars desc
-    sorted_candidates = sorted(candidates, key=lambda x: x.get('daily_stars', 0), reverse=True)
+    # Group by source to ensure diversity
+    candidates_by_source = {}
+    for item in candidates:
+        src = item.get('source', 'unknown')
+        if src not in candidates_by_source:
+            candidates_by_source[src] = []
+        candidates_by_source[src].append(item)
     
-    # Pick a random tool from the top 10 to add variety
-    top_n = min(len(sorted_candidates), 10)
-    top_tool = random.choice(sorted_candidates[:top_n])
-    print(f"Selected Tool: {top_tool['name']} (from top {top_n})")
+    # Pick top 2 from each source
+    final_pool = []
+    for src, items in candidates_by_source.items():
+        # Sort each source by daily_stars
+        sorted_items = sorted(items, key=lambda x: x.get('daily_stars', 0), reverse=True)
+        final_pool.extend(sorted_items[:2])
+        
+    print(f"Candidate Poll Size: {len(final_pool)} (Sources: {list(candidates_by_source.keys())})")
+    
+    # Pick random from this diverse pool
+    top_tool = random.choice(final_pool)
+    print(f"Selected Tool: {top_tool['name']} (Source: {top_tool.get('source')})")
     
     # 3. Generate Draft
     draft_content = generate_article(top_tool)
