@@ -367,6 +367,10 @@ if __name__ == "__main__":
     # 3. Generate Content
     body_content = generate_article(top_tool, x_hot_words=x_hot_words)
     
+    if "記事生成に失敗しました" in body_content or "Mock content" in body_content:
+        logger.error("Article generation failed. Aborting save.")
+        exit(1) # Exit with error code to alert GitHub Actions if needed, or just 0 to skip quietly.
+    
     # 4. Extract Title & Frontmatter
     article_title = "New AI Tool: " + top_tool['name']
     for line in body_content.split("\n"):
