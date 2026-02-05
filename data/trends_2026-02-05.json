@@ -5,10 +5,10 @@
     "owner": "thedotmack",
     "url": "https://github.com/thedotmack/claude-mem",
     "description": "A Claude Code plugin that automatically captures everything Claude does during your coding sessions, compresses it with AI (using Claude's agent-sdk), and injects relevant context back into future sessions.",
-    "stars": 23021,
+    "stars": 23026,
     "daily_stars": 2638,
     "language": "all",
-    "fetched_at": "2026-02-05T08:17:26.824675"
+    "fetched_at": "2026-02-05T08:21:13.280094"
   },
   {
     "source": "hacker_news",
@@ -19,7 +19,7 @@
     "stars": 1059,
     "daily_stars": 1059,
     "language": "tech",
-    "fetched_at": "2026-02-05T08:17:31.914496"
+    "fetched_at": "2026-02-05T08:21:19.041028"
   },
   {
     "source": "github",
@@ -27,10 +27,10 @@
     "owner": "openai",
     "url": "https://github.com/openai/skills",
     "description": "Skills Catalog for Codex",
-    "stars": 3909,
+    "stars": 3910,
     "daily_stars": 746,
     "language": "all",
-    "fetched_at": "2026-02-05T08:17:26.825203"
+    "fetched_at": "2026-02-05T08:21:13.280610"
   },
   {
     "source": "hacker_news",
@@ -38,10 +38,10 @@
     "owner": "meetpateltech",
     "url": "https://www.anthropic.com/news/claude-is-a-space-to-think",
     "description": "Claude is a space to think",
-    "stars": 441,
-    "daily_stars": 441,
+    "stars": 442,
+    "daily_stars": 442,
     "language": "tech",
-    "fetched_at": "2026-02-05T08:17:31.036388"
+    "fetched_at": "2026-02-05T08:21:18.186759"
   },
   {
     "source": "hacker_news",
@@ -52,7 +52,7 @@
     "stars": 322,
     "daily_stars": 322,
     "language": "tech",
-    "fetched_at": "2026-02-05T08:17:29.582090"
+    "fetched_at": "2026-02-05T08:21:16.579987"
   },
   {
     "source": "github",
@@ -63,7 +63,7 @@
     "stars": 14017,
     "daily_stars": 315,
     "language": "python",
-    "fetched_at": "2026-02-05T08:17:28.092409"
+    "fetched_at": "2026-02-05T08:21:14.953681"
   },
   {
     "source": "github",
@@ -74,7 +74,7 @@
     "stars": 42287,
     "daily_stars": 313,
     "language": "python",
-    "fetched_at": "2026-02-05T08:17:28.088374"
+    "fetched_at": "2026-02-05T08:21:14.949747"
   },
   {
     "source": "github",
@@ -85,7 +85,7 @@
     "stars": 574,
     "daily_stars": 289,
     "language": "python",
-    "fetched_at": "2026-02-05T08:17:28.089963"
+    "fetched_at": "2026-02-05T08:21:14.951322"
   },
   {
     "source": "hacker_news",
@@ -96,7 +96,7 @@
     "stars": 264,
     "daily_stars": 264,
     "language": "tech",
-    "fetched_at": "2026-02-05T08:17:29.297369"
+    "fetched_at": "2026-02-05T08:21:16.252789"
   },
   {
     "source": "github",
@@ -107,7 +107,7 @@
     "stars": 30073,
     "daily_stars": 227,
     "language": "all",
-    "fetched_at": "2026-02-05T08:17:26.826154"
+    "fetched_at": "2026-02-05T08:21:13.281568"
   },
   {
     "source": "hacker_news",
@@ -118,7 +118,7 @@
     "stars": 206,
     "daily_stars": 206,
     "language": "tech",
-    "fetched_at": "2026-02-05T08:17:29.680024"
+    "fetched_at": "2026-02-05T08:21:16.698326"
   },
   {
     "source": "github",
@@ -129,7 +129,7 @@
     "stars": 1724,
     "daily_stars": 187,
     "language": "all",
-    "fetched_at": "2026-02-05T08:17:26.828078"
+    "fetched_at": "2026-02-05T08:21:13.283485"
   },
   {
     "source": "hacker_news",
@@ -137,10 +137,10 @@
     "owner": "WaitWaitWha",
     "url": "https://www.biometricupdate.com/202602/ice-seeks-industry-input-on-ad-tech-location-data-for-investigative-use",
     "description": "ICE seeks industry input on ad tech location data for investigative use",
-    "stars": 166,
-    "daily_stars": 166,
+    "stars": 168,
+    "daily_stars": 168,
     "language": "tech",
-    "fetched_at": "2026-02-05T08:17:29.390946"
+    "fetched_at": "2026-02-05T08:21:16.367254"
   },
   {
     "source": "github",
@@ -151,7 +151,7 @@
     "stars": 29307,
     "daily_stars": 135,
     "language": "python",
-    "fetched_at": "2026-02-05T08:17:28.092901"
+    "fetched_at": "2026-02-05T08:21:14.954157"
   },
   {
     "source": "github",
@@ -162,7 +162,7 @@
     "stars": 15283,
     "daily_stars": 123,
     "language": "python",
-    "fetched_at": "2026-02-05T08:17:28.091412"
+    "fetched_at": "2026-02-05T08:21:14.952734"
   },
   {
     "source": "github",
@@ -173,7 +173,7 @@
     "stars": 13443,
     "daily_stars": 109,
     "language": "python",
-    "fetched_at": "2026-02-05T08:17:28.091923"
+    "fetched_at": "2026-02-05T08:21:14.953212"
   },
   {
     "source": "hacker_news",
@@ -184,18 +184,7 @@
     "stars": 109,
     "daily_stars": 109,
     "language": "tech",
-    "fetched_at": "2026-02-05T08:17:31.235659"
-  },
-  {
-    "source": "product_hunt",
-    "name": "Higgsfield Vibe-Motion",
-    "owner": "ProductHunt",
-    "url": "https://www.producthunt.com/products/higgsfield",
-    "description": "\n            Create motion images in a single prompt in an editing canvas\n          \n\nDiscussion\n            |\n            Link\n",
-    "stars": 0,
-    "daily_stars": 100,
-    "language": "saas",
-    "fetched_at": "2026-02-05T08:17:28.252551"
+    "fetched_at": "2026-02-05T08:21:18.397694"
   },
   {
     "source": "product_hunt",
@@ -206,18 +195,18 @@
     "stars": 0,
     "daily_stars": 100,
     "language": "saas",
-    "fetched_at": "2026-02-05T08:17:28.252770"
+    "fetched_at": "2026-02-05T08:21:15.071165"
   },
   {
     "source": "product_hunt",
-    "name": "Sylvian AI Forms",
+    "name": "Higgsfield Vibe-Motion",
     "owner": "ProductHunt",
-    "url": "https://www.producthunt.com/products/sylvian-excel-agent",
-    "description": "\n            Never fill a PDF by hand again\n          \n\nDiscussion\n            |\n            Link\n",
+    "url": "https://www.producthunt.com/products/higgsfield",
+    "description": "\n            Create motion images in a single prompt in an editing canvas\n          \n\nDiscussion\n            |\n            Link\n",
     "stars": 0,
     "daily_stars": 100,
     "language": "saas",
-    "fetched_at": "2026-02-05T08:17:28.252990"
+    "fetched_at": "2026-02-05T08:21:15.071378"
   },
   {
     "source": "product_hunt",
@@ -228,40 +217,7 @@
     "stars": 0,
     "daily_stars": 100,
     "language": "saas",
-    "fetched_at": "2026-02-05T08:17:28.253189"
-  },
-  {
-    "source": "product_hunt",
-    "name": "Supaboard",
-    "owner": "ProductHunt",
-    "url": "https://www.producthunt.com/products/supaboard-ai",
-    "description": "\n            Ask in plain English. Get accurate answers from your data\n          \n\nDiscussion\n            |\n            Link\n",
-    "stars": 0,
-    "daily_stars": 100,
-    "language": "saas",
-    "fetched_at": "2026-02-05T08:17:28.253381"
-  },
-  {
-    "source": "product_hunt",
-    "name": "AutoBandStudio",
-    "owner": "ProductHunt",
-    "url": "https://www.producthunt.com/products/autobandstudio",
-    "description": "\n            AI that turns your melody into a full arrangement\n          \n\nDiscussion\n            |\n            Link\n",
-    "stars": 0,
-    "daily_stars": 100,
-    "language": "saas",
-    "fetched_at": "2026-02-05T08:17:28.253570"
-  },
-  {
-    "source": "product_hunt",
-    "name": "Voxtral Transcribe 2 by Mistral",
-    "owner": "ProductHunt",
-    "url": "https://www.producthunt.com/products/mistral-7b",
-    "description": "\n            Real-time speech-to-text with speaker diarization\n          \n\nDiscussion\n            |\n            Link\n",
-    "stars": 0,
-    "daily_stars": 100,
-    "language": "saas",
-    "fetched_at": "2026-02-05T08:17:28.253759"
+    "fetched_at": "2026-02-05T08:21:15.071572"
   },
   {
     "source": "product_hunt",
@@ -272,7 +228,18 @@
     "stars": 0,
     "daily_stars": 100,
     "language": "saas",
-    "fetched_at": "2026-02-05T08:17:28.253974"
+    "fetched_at": "2026-02-05T08:21:15.071772"
+  },
+  {
+    "source": "product_hunt",
+    "name": "Voxtral Transcribe 2 by Mistral",
+    "owner": "ProductHunt",
+    "url": "https://www.producthunt.com/products/mistral-7b",
+    "description": "\n            Real-time speech-to-text with speaker diarization\n          \n\nDiscussion\n            |\n            Link\n",
+    "stars": 0,
+    "daily_stars": 100,
+    "language": "saas",
+    "fetched_at": "2026-02-05T08:21:15.071962"
   },
   {
     "source": "product_hunt",
@@ -283,7 +250,29 @@
     "stars": 0,
     "daily_stars": 100,
     "language": "saas",
-    "fetched_at": "2026-02-05T08:17:28.254168"
+    "fetched_at": "2026-02-05T08:21:15.072193"
+  },
+  {
+    "source": "product_hunt",
+    "name": "Supaboard",
+    "owner": "ProductHunt",
+    "url": "https://www.producthunt.com/products/supaboard-ai",
+    "description": "\n            Ask in plain English. Get accurate answers from your data\n          \n\nDiscussion\n            |\n            Link\n",
+    "stars": 0,
+    "daily_stars": 100,
+    "language": "saas",
+    "fetched_at": "2026-02-05T08:21:15.072398"
+  },
+  {
+    "source": "product_hunt",
+    "name": "Sylvian AI Forms",
+    "owner": "ProductHunt",
+    "url": "https://www.producthunt.com/products/sylvian-excel-agent",
+    "description": "\n            Never fill a PDF by hand again\n          \n\nDiscussion\n            |\n            Link\n",
+    "stars": 0,
+    "daily_stars": 100,
+    "language": "saas",
+    "fetched_at": "2026-02-05T08:21:15.072586"
   },
   {
     "source": "product_hunt",
@@ -294,7 +283,18 @@
     "stars": 0,
     "daily_stars": 100,
     "language": "saas",
-    "fetched_at": "2026-02-05T08:17:28.254375"
+    "fetched_at": "2026-02-05T08:21:15.072790"
+  },
+  {
+    "source": "product_hunt",
+    "name": "AutoBandStudio",
+    "owner": "ProductHunt",
+    "url": "https://www.producthunt.com/products/autobandstudio",
+    "description": "\n            AI that turns your melody into a full arrangement\n          \n\nDiscussion\n            |\n            Link\n",
+    "stars": 0,
+    "daily_stars": 100,
+    "language": "saas",
+    "fetched_at": "2026-02-05T08:21:15.072980"
   },
   {
     "source": "github",
@@ -305,7 +305,7 @@
     "stars": 14047,
     "daily_stars": 89,
     "language": "all",
-    "fetched_at": "2026-02-05T08:17:26.827587"
+    "fetched_at": "2026-02-05T08:21:13.282987"
   },
   {
     "source": "github",
@@ -316,7 +316,7 @@
     "stars": 36619,
     "daily_stars": 83,
     "language": "all",
-    "fetched_at": "2026-02-05T08:17:26.829044"
+    "fetched_at": "2026-02-05T08:21:13.284459"
   },
   {
     "source": "github",
@@ -327,7 +327,7 @@
     "stars": 58337,
     "daily_stars": 68,
     "language": "all",
-    "fetched_at": "2026-02-05T08:17:26.829511"
+    "fetched_at": "2026-02-05T08:21:13.284934"
   },
   {
     "source": "github",
@@ -338,7 +338,7 @@
     "stars": 2478,
     "daily_stars": 47,
     "language": "all",
-    "fetched_at": "2026-02-05T08:17:26.825665"
+    "fetched_at": "2026-02-05T08:21:13.281085"
   },
   {
     "source": "qiita",
@@ -349,7 +349,7 @@
     "stars": 40,
     "daily_stars": 40,
     "language": "japanese",
-    "fetched_at": "2026-02-05T08:17:33.896390"
+    "fetched_at": "2026-02-05T08:21:21.170926"
   },
   {
     "source": "qiita",
@@ -360,7 +360,7 @@
     "stars": 40,
     "daily_stars": 40,
     "language": "japanese",
-    "fetched_at": "2026-02-05T08:17:33.896404"
+    "fetched_at": "2026-02-05T08:21:21.170940"
   },
   {
     "source": "qiita",
@@ -371,7 +371,7 @@
     "stars": 40,
     "daily_stars": 40,
     "language": "japanese",
-    "fetched_at": "2026-02-05T08:17:33.896410"
+    "fetched_at": "2026-02-05T08:21:21.170947"
   },
   {
     "source": "qiita",
@@ -382,7 +382,7 @@
     "stars": 40,
     "daily_stars": 40,
     "language": "japanese",
-    "fetched_at": "2026-02-05T08:17:33.896416"
+    "fetched_at": "2026-02-05T08:21:21.170953"
   },
   {
     "source": "qiita",
@@ -393,7 +393,7 @@
     "stars": 40,
     "daily_stars": 40,
     "language": "japanese",
-    "fetched_at": "2026-02-05T08:17:34.158802"
+    "fetched_at": "2026-02-05T08:21:21.607751"
   },
   {
     "source": "qiita",
@@ -404,7 +404,7 @@
     "stars": 40,
     "daily_stars": 40,
     "language": "japanese",
-    "fetched_at": "2026-02-05T08:17:34.158816"
+    "fetched_at": "2026-02-05T08:21:21.607765"
   },
   {
     "source": "qiita",
@@ -415,7 +415,7 @@
     "stars": 40,
     "daily_stars": 40,
     "language": "japanese",
-    "fetched_at": "2026-02-05T08:17:34.158823"
+    "fetched_at": "2026-02-05T08:21:21.607774"
   },
   {
     "source": "qiita",
@@ -426,7 +426,7 @@
     "stars": 40,
     "daily_stars": 40,
     "language": "japanese",
-    "fetched_at": "2026-02-05T08:17:34.158829"
+    "fetched_at": "2026-02-05T08:21:21.607781"
   },
   {
     "source": "qiita",
@@ -437,7 +437,7 @@
     "stars": 40,
     "daily_stars": 40,
     "language": "japanese",
-    "fetched_at": "2026-02-05T08:17:34.401768"
+    "fetched_at": "2026-02-05T08:21:22.031529"
   },
   {
     "source": "qiita",
@@ -448,7 +448,7 @@
     "stars": 40,
     "daily_stars": 40,
     "language": "japanese",
-    "fetched_at": "2026-02-05T08:17:34.401774"
+    "fetched_at": "2026-02-05T08:21:22.031535"
   },
   {
     "source": "qiita",
@@ -459,7 +459,7 @@
     "stars": 40,
     "daily_stars": 40,
     "language": "japanese",
-    "fetched_at": "2026-02-05T08:17:34.401780"
+    "fetched_at": "2026-02-05T08:21:22.031542"
   },
   {
     "source": "github",
@@ -470,7 +470,7 @@
     "stars": 91282,
     "daily_stars": 35,
     "language": "all",
-    "fetched_at": "2026-02-05T08:17:26.828543"
+    "fetched_at": "2026-02-05T08:21:13.283957"
   },
   {
     "source": "github",
@@ -478,10 +478,10 @@
     "owner": "zhayujie",
     "url": "https://github.com/zhayujie/chatgpt-on-wechat",
     "description": "CowAgent是基于大模型的超级AI助理，能主动思考和任务规划、访问操作系统和外部资源、创造和执行Skills、拥有长期记忆并不断成长。同时支持飞书、钉钉、企业微信应用、微信公众号、网页等接入，可选择OpenAI/Claude/Gemini/DeepSeek/ Qwen/GLM/Kimi/LinkAI，能处理文本、语音、图片和文件，可快速搭建个人AI助手和企业数字员工。",
-    "stars": 41038,
+    "stars": 41039,
     "daily_stars": 32,
     "language": "python",
-    "fetched_at": "2026-02-05T08:17:28.089469"
+    "fetched_at": "2026-02-05T08:21:14.950833"
   },
   {
     "source": "github",
@@ -489,10 +489,10 @@
     "owner": "likec4",
     "url": "https://github.com/likec4/likec4",
     "description": "Visualize, collaborate, and evolve the software architecture with always actual and live diagrams from your code",
-    "stars": 1573,
+    "stars": 1574,
     "daily_stars": 29,
     "language": "all",
-    "fetched_at": "2026-02-05T08:17:26.830126"
+    "fetched_at": "2026-02-05T08:21:13.285538"
   },
   {
     "source": "github",
@@ -503,7 +503,7 @@
     "stars": 26230,
     "daily_stars": 28,
     "language": "all",
-    "fetched_at": "2026-02-05T08:17:26.826622"
+    "fetched_at": "2026-02-05T08:21:13.282033"
   },
   {
     "source": "github",
@@ -514,7 +514,7 @@
     "stars": 10185,
     "daily_stars": 26,
     "language": "python",
-    "fetched_at": "2026-02-05T08:17:28.090446"
+    "fetched_at": "2026-02-05T08:21:14.951788"
   },
   {
     "source": "github",
@@ -525,7 +525,7 @@
     "stars": 28559,
     "daily_stars": 14,
     "language": "python",
-    "fetched_at": "2026-02-05T08:17:28.088993"
+    "fetched_at": "2026-02-05T08:21:14.950360"
   },
   {
     "source": "github",
@@ -536,7 +536,7 @@
     "stars": 14896,
     "daily_stars": 13,
     "language": "python",
-    "fetched_at": "2026-02-05T08:17:28.090937"
+    "fetched_at": "2026-02-05T08:21:14.952271"
   },
   {
     "source": "github",
@@ -547,6 +547,6 @@
     "stars": 4367,
     "daily_stars": 3,
     "language": "all",
-    "fetched_at": "2026-02-05T08:17:26.827108"
+    "fetched_at": "2026-02-05T08:21:13.282519"
   }
 ]
