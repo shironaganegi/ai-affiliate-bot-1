@@ -22,6 +22,21 @@ theme = 'PaperMod'
     name = "Search 🔍"
     url = "/search/"
     weight = 30
+  [[menu.main]]
+    identifier = "about"
+    name = "About"
+    url = "/about/"
+    weight = 40
+  [[menu.main]]
+    identifier = "privacy"
+    name = "Privacy"
+    url = "/privacy/"
+    weight = 50
+  [[menu.main]]
+    identifier = "contact"
+    name = "Contact"
+    url = "/contact/"
+    weight = 60
 
 [params]
   defaultTheme = "auto"
