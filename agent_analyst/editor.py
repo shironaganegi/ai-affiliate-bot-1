@@ -17,7 +17,8 @@ def refine_article(draft_text):
         print("WARNING: GEMINI_API_KEY is missing. Editor bypass.")
         return draft_text
 
-    system_prompt = """
+    try:
+        system_prompt = """
 あなたは伝説のテックメディア「白ネギ・テック」の辛口編集長です。
 提出されたAI下書きを、読者の魂を揺さぶるような、エモーショナルで拡散されやすい文章にリライトしてください。
 
@@ -33,31 +34,32 @@ def refine_article(draft_text):
 - `<div class="recommend-box">...</div>` などのHTMLタグが含まれている場合、それはアフィリエイトリンクです。**一文字も変えず、そのまま保持してください。**
 - Markdownの構造（# や ##）は維持してください。
 """
-    prompt = f"{system_prompt}\n\n以下が編集対象の原稿です：\n\n{draft_text}"
+        prompt = f"{system_prompt}\n\n以下が編集対象の原稿です：\n\n{draft_text}"
 
-    candidate_models = [
-        'gemini-2.5-flash',
-        'gemini-2.0-flash',
-        'gemini-flash-latest',
-        'gemini-2.0-flash-exp',
-        'gemini-1.5-pro',
-        'gemini-1.5-flash'
-    ]
+        candidate_models = [
+            'gemini-2.5-flash',
+            'gemini-2.0-flash',
+            'gemini-flash-latest',
+            'gemini-2.0-flash-exp',
+            'gemini-1.5-pro',
+            'gemini-1.5-flash'
+        ]
 
-    response = None
-    for model_name in candidate_models:
-        try:
-            model = genai.GenerativeModel(model_name)
-            response = model.generate_content(prompt)
-            print(f"Editor optimized using: {model_name}")
-            break
-        except Exception:
-            continue
-            
-    if not response:
-        raise Exception("All editor models failed.")
+        response = None
+        for model_name in candidate_models:
+            try:
+                model = genai.GenerativeModel(model_name)
+                response = model.generate_content(prompt)
+                print(f"Editor optimized using: {model_name}")
+                break
+            except Exception:
+                continue
+                
+        if not response:
+            raise Exception("All editor models failed.")
 
-    return response.text
+        return response.text
+
     except Exception as e:
         print(f"Editor refinement failed: {e}")
         return draft_text # Fallback to original
