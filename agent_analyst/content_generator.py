@@ -126,6 +126,30 @@ def generate_article(tool_data, x_hot_words=[]):
     refined_article = append_footer_content(refined_article, x_post)
     
     return refined_article
+    
+def translate_article_to_english(content):
+    """
+    Translates the Japanese Markdown content to English using Gemini.
+    """
+    prompt = f"""
+    You are a professional Tech Translator.
+    Translate the following Japanese Markdown blog post into high-quality English.
+    
+    Requirements:
+    - Keep the Markdown format exactly as is (headings, links, code blocks).
+    - Maintain the professional and insightful tone.
+    - Translate "Recommended Products" section naturally (or keep affiliate links if they are universal, otherwise keep them).
+    - Do NOT translate the Frontmatter (YAML block at the top), I will handle it programmatically, BUT if you see it, just leave it or ignore it. 
+    - Output ONLY the translated markdown content.
+    
+    Original Content:
+    {content}
+    """
+    
+    response = call_gemini_with_fallback(prompt)
+    if response:
+        return response.text
+    return None
 
 def call_gemini_with_fallback(prompt):
     candidate_models = [
@@ -381,5 +405,33 @@ if __name__ == "__main__":
     frontmatter = generate_zenn_frontmatter(article_title, top_tool['name'], top_tool.get('source'))
     final_content = frontmatter + body_content
     
-    # 5. Save
-    save_article_file(final_content, top_tool)
+    # 5. Save Japanese Article
+    filepath_ja = save_article_file(final_content, top_tool)
+    
+    # 6. Generate & Save English Version
+    # Strip Zenn frontmatter for translation to avoid confusion
+    body_only = body_content
+    logger.info("Translating article to English...")
+    
+    en_body = translate_article_to_english(body_only)
+    if en_body:
+        # Create English Frontmatter (Hugo compatible)
+        # Note: Zenn frontmatter is not needed for English, but we use a generic md format
+        # We will fix frontmatter more properly in distributor, but here we just need content.
+        en_content = f"""---
+title: "{article_title} (English)"
+emoji: "🤖"
+type: "tech"
+topics: []
+published: false
+---
+
+{en_body}
+"""
+        # Save as .en.md
+        filename_en = os.path.basename(filepath_ja).replace(".md", ".en.md")
+        filepath_en = os.path.join(os.path.dirname(filepath_ja), filename_en)
+        
+        with open(filepath_en, 'w', encoding='utf-8') as f:
+            f.write(en_content)
+        logger.info(f"English translation saved to: {filepath_en}")

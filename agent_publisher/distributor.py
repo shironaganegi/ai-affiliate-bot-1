@@ -145,7 +145,7 @@ def send_note_draft_to_discord(note_text):
     else:
         logger.error("Failed to send note draft to Discord.")
 
-def save_hugo_article(title, body, zenn_url, original_file_path):
+def save_hugo_article(title, body, zenn_url, original_file_path, lang="ja"):
     """
     Saves the article to the Hugo website content directory.
     """
@@ -154,33 +154,45 @@ def save_hugo_article(title, body, zenn_url, original_file_path):
     
     # Generate Hugo Frontmatter
     date_str = datetime.now().isoformat()
-    slug = os.path.splitext(os.path.basename(original_file_path))[0]
     
+    # Handle filename suffix for language
+    base_name = os.path.basename(original_file_path)
+    if lang == "en":
+        # expects slug.en.md -> slug.en.md (Hugo handles .en.md automatically)
+        target_filename = base_name 
+    else:
+        # expects slug.md -> slug.md
+        target_filename = base_name
+
     # Extract tags (naive)
     tags = ["AI", "Tools"]
     if "python" in body.lower(): tags.append("Python")
+    
+    description = f"AIツール「{title}」の活用法を紹介" if lang == "ja" else f"Introduction to {title}"
     
     frontmatter = f"""+++
 title = "{title}"
 date = "{date_str}"
 tags = {json.dumps(tags)}
 draft = false
-description = "AIツール「{title}」の活用法を紹介"
+description = "{description}"
 canonicalUrl = "{zenn_url}"
 +++
 
 """
     # Clean body for Hugo
-    # Remove the affiliate markers but KEEP the content
     hugo_body = body.replace("<!-- AFFILIATE_START -->", "").replace("<!-- AFFILIATE_END -->", "")
     
-    # Add Canonical Link to Zenn (Cross-linking for SEO)
-    footer = f"\n\n---\n\n> この記事は [Zenn]({zenn_url}) にも投稿されています。\n"
+    # Add Footer
+    if lang == "ja":
+        footer = f"\n\n---\n\n> この記事は [Zenn]({zenn_url}) にも投稿されています。\n"
+    else:
+        footer = f"\n\n---\n\n> This article was originally published on [Zenn]({zenn_url}) (Japanese).\n"
     
-    with open(os.path.join(website_dir, f"{slug}.md"), 'w', encoding='utf-8') as f:
+    with open(os.path.join(website_dir, target_filename), 'w', encoding='utf-8') as f:
         f.write(frontmatter + hugo_body + footer)
     
-    logger.info(f"Saved Hugo article to: {slug}.md")
+    logger.info(f"Saved Hugo article ({lang}) to: {target_filename}")
 
 
 def main():
@@ -188,50 +200,63 @@ def main():
 
     # Debug: Check Env Vars (Masked)
     print(f"DEBUG: QIITA_ACCESS_TOKEN is set: {'Yes' if os.getenv('QIITA_ACCESS_TOKEN') else 'No'}")
-    bsky_pass = os.getenv('BLUESKY_PASSWORD')
-    print(f"DEBUG: BLUESKY_PASSWORD is set: {'Yes (Length: ' + str(len(bsky_pass)) + ')' if bsky_pass else 'No'}")
     
-    article_path = get_latest_article()
-    if not article_path:
+    # Find the latest Japanese article
+    latest_ja_path = get_latest_article()
+    if not latest_ja_path:
         print("No articles found to distribute.")
         return
 
-    title, body = parse_article(article_path)
-    
-    # Assume Zenn URL (You might need to adjust this if you have a custom domain)
-    # The slug is the filename without .md
-    slug = os.path.basename(article_path).replace(".md", "")
+    # Process Japanese Article (Main Logic)
+    title, body = parse_article(latest_ja_path)
+    slug = os.path.basename(latest_ja_path).replace(".md", "")
     zenn_url = f"https://zenn.dev/shironaganegi/articles/{slug}"
     
-    print(f"Processing: {title}")
-    print(f"Zenn URL: {zenn_url}")
-
-    # 1. Post to Qiita
+    print(f"Processing (JA): {title}")
+    
+    # 1. Post to Qiita (JA only)
     try:
         qiita_body = clean_for_qiita(body, zenn_url)
         post_to_qiita(title, qiita_body)
     except Exception as e:
         print(f"Failed to process Qiita distribution: {e}")
     
-    # 2. Post to BlueSky
+    # 2. Post to BlueSky (JA only)
     try:
         bsky_text = f"📝 新しい記事を書きました！\n\n{title}\n\n#AI #Tech #Zenn\n{zenn_url}"
         post_to_bluesky(bsky_text)
     except Exception as e:
         print(f"Failed to process BlueSky distribution: {e}")
 
-    # 3. Generate Note Draft (Manual)
+    # 3. Save to Hugo Website (JA)
     try:
-        note_draft = generate_note_draft(title, zenn_url)
-        send_note_draft_to_discord(note_draft)
+        save_hugo_article(title, body, zenn_url, latest_ja_path, lang="ja")
     except Exception as e:
-        print(f"Failed to process Note distribution: {e}")
+        logger.error(f"Failed to generate Hugo article (JA): {e}")
 
-    # 4. Save to Hugo Website (Phase 2)
-    try:
-        save_hugo_article(title, body, zenn_url, article_path)
-    except Exception as e:
-        logger.error(f"Failed to generate Hugo article: {e}")
+    # 4. Process English Article (If exists)
+    # Ensure we look for .en.md corresponding to the latest .md
+    latest_en_path = latest_ja_path.replace(".md", ".en.md")
+    
+    if os.path.exists(latest_en_path):
+        print(f"Found English translation: {latest_en_path}")
+        try:
+            # Parse English (Simple, as frontmatter is already clean/minimal)
+            with open(latest_en_path, 'r', encoding='utf-8') as f:
+                en_content = f.read()
+            
+            # Extract simple title
+            en_title_match = re.search(r'^title:\s*"(.*)"', en_content, re.MULTILINE)
+            en_title = en_title_match.group(1) if en_title_match else title
+            
+            # Clean body (Remove frontmatter)
+            en_body = re.sub(r'^---[\s\S]*?---\n', '', en_content)
+            
+            save_hugo_article(en_title, en_body, zenn_url, latest_en_path, lang="en")
+        except Exception as e:
+             logger.error(f"Failed to generate Hugo article (EN): {e}")
+    else:
+        print("No English translation found. Skipping EN distribution.")
     
     print("--- Distribution Completed ---")
 
