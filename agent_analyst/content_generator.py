@@ -62,9 +62,9 @@ def get_readme_content(github_url):
     
     return "No detailed documentation found."
 
-def generate_article(tool_data):
+def generate_article(tool_data, x_hot_words=[]):
     """
-    Generates a blog post draft using Gemini.
+    Generates a blog post draft and a viral X post using Gemini.
     """
     name = tool_data.get('name')
     description = tool_data.get('description')
@@ -77,23 +77,38 @@ def generate_article(tool_data):
     # NEW: Fetch 'Failure Stories' from Reddit
     failure_context = mine_failures(name)
     
+    # NEW: X Trends context
+    x_context = ", ".join(x_hot_words[:10])
+    
     prompt = f"""
-    You are a professional Tech Writer. Write a high-quality blog post in JAPANESE and provide search keywords for related products.
+    You are a professional Tech Writer and Social Media Strategist.
+    
+    Task 1: Write a high-quality blog post in JAPANESE.
+    Task 2: Craft a VIRAL X (Twitter) POST to promote this article.
+
+    Trends on X (Japan) right now: [{x_context}]
     
     Product Info:
     - Name: {name} | URL: {url} | Description: {description}
     - Document: {readme_text[:5000]}
     - Feedback: {failure_context}
 
-    Requirements:
+    Requirements for "article":
     1. Structure: Title, Intro, Features, Install, Pros/Cons, Conclusion.
-    2. Placeholder: Insert exactly `{{{{RECOMMENDED_PRODUCTS}}}}` once in the middle of the article (after features).
+    2. Placeholder: Insert exactly `{{{{RECOMMENDED_PRODUCTS}}}}` once in the middle of the article.
     3. PR Notice: The very first line after the title must be `> ※本記事はプロモーションを含みます`.
-    4. Anti-Hallucination: Do NOT generate any "Read Also" (あわせて読みたい) sections, dummy links to example.com, or fake HTML widgets. Only use the placeholder.
 
-    Output MUST be a valid JSON with two fields:
-    - "article": The full markdown article.
-    - "search_keywords": A list of 3-5 strings. Start with specific terms, then broader concepts, then related gadgets/books. (e.g. ["{name}", "AI Programming", "Efficient Coding", "Mechanical Keyboard"])
+    Requirements for "x_viral_post":
+    - Designed to maximize engagement and clicks on X.
+    - OPTIONAL: If a trending word from [{x_context}] is highly relevant to the topic, utilize it naturally. Do NOT force it if irrelevant.
+    - Use formatting like bullet points, cliffhangers, or strong "Hooks".
+    - Include 2-3 relevant hashtags.
+    - Must be in JAPANESE.
+
+    Output MUST be a valid JSON with three fields:
+    - "article": The full markdown article content.
+    - "search_keywords": A list of 3-5 strings for product search.
+    - "x_viral_post": The text for the viral tweet.
     """
 
     if not api_key:
@@ -153,8 +168,9 @@ def generate_article(tool_data):
             return f"# {name}\n> ※本記事はプロモーションを含みます\n\n{response.text}"
 
         draft = res_json.get("article", "")
-        # Robust keyword retrieval
         keywords = res_json.get("search_keywords", [])
+        x_post = res_json.get("x_viral_post", "")
+
         if isinstance(keywords, str): keywords = [keywords]
         if not keywords: keywords = [name]
 
@@ -200,6 +216,10 @@ def generate_article(tool_data):
             final_article += f"\n\n---\n### PR\n{ad['html']}"
         except Exception:
             pass
+
+        # 4. Add X Viral Post for Notification
+        if x_post:
+            final_article += f"\n\n---X_POST_START---\n{x_post}\n---X_POST_END---\n"
 
         return final_article
 
@@ -342,8 +362,16 @@ if __name__ == "__main__":
         print("No trend data found. Run watcher first.")
         exit()
 
+    # Handle new dict format or old list format
+    if isinstance(trends_data, dict):
+        topics = trends_data.get("topics", [])
+        x_hot_words = trends_data.get("x_hot_words", [])
+    else:
+        topics = trends_data
+        x_hot_words = []
+
     # 2. Select Tool
-    top_tool = select_best_candidate(trends_data)
+    top_tool = select_best_candidate(topics)
     if not top_tool:
         print("No suitable candidates found.")
         exit()
@@ -351,7 +379,7 @@ if __name__ == "__main__":
     print(f"Selected Tool: {top_tool['name']} (Source: {top_tool.get('source')})")
     
     # 3. Generate Content
-    body_content = generate_article(top_tool)
+    body_content = generate_article(top_tool, x_hot_words=x_hot_words)
     
     # 4. Extract Title & Frontmatter
     article_title = "New AI Tool: " + top_tool['name']

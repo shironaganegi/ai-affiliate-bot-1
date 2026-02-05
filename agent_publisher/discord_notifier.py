@@ -42,25 +42,31 @@ def send_discord_notification(webhook_url, draft_path=None):
     # Using title as tool_name for simplicity in notification
     tool_name = title.split(":")[0].strip()
     
-    # Create Discord Embed message
-    embed = {
-        "title": f"New Article Draft: {tool_name}",
-        "description": title[:200],
-        "color": 5814783,  # Blue color
-        "fields": [
-            {"name": "Tool", "value": tool_name, "inline": True},
-            {"name": "Generated At", "value": datetime.now().strftime("%Y-%m-%d %H:%M"), "inline": True}
-        ],
-        "footer": {"text": "AI Affiliate Bot - Check GitHub for full content"}
-    }
-
-    # Tweet Draft for manual posting
+    # Extract Viral X Post from hidden section
     tweet_text = f"🤖 今日の注目AIツール: {tool_name}\n\n{title}\n\n詳細はこちら！👇\nhttps://zenn.dev/shironaganegi\n\n#AI #Tech #白ネギテック"
     
+    x_post_match = re.search(r'---X_POST_START---\n(.*?)\n---X_POST_END---', content, re.DOTALL)
+    if x_post_match:
+        tweet_text = x_post_match.group(1).strip()
+        # Clean the content for Discord embed so it doesn't show the hidden section
+        content = content.replace(x_post_match.group(0), "")
+    
+    # Create Discord Embed message
+    embed = {
+        "title": f"📝 新着記事: {tool_name}",
+        "description": title[:200],
+        "color": 5814783,
+        "fields": [
+            {"name": "バズりポスト案 (コピペ用)", "value": f"```\n{tweet_text}\n```", "inline": False},
+            {"name": "Generated At", "value": datetime.now().strftime("%Y-%m-%d %H:%M"), "inline": True}
+        ],
+        "footer": {"text": "AI Affiliate Bot - 魂の1記事"}
+    }
+ 
     payload = {
-        "username": "AI Affiliate Bot",
+        "username": "白ネギ・テック編集部",
         "avatar_url": "https://cdn-icons-png.flaticon.com/512/4712/4712109.png",
-        "content": f"**📝 X投稿用ドラフト** (コピペして使ってね！)\n```{tweet_text}```",
+        "content": "@everyone **新しい記事とバズり原稿を用意したぞ！** 🚀",
         "embeds": [embed]
     }
     
