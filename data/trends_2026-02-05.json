@@ -6,10 +6,10 @@
       "owner": "thedotmack",
       "url": "https://github.com/thedotmack/claude-mem",
       "description": "A Claude Code plugin that automatically captures everything Claude does during your coding sessions, compresses it with AI (using Claude's agent-sdk), and injects relevant context back into future sessions.",
-      "stars": 23469,
+      "stars": 23493,
       "daily_stars": 1899,
       "language": "all",
-      "fetched_at": "2026-02-05T15:46:48.932894"
+      "fetched_at": "2026-02-05T16:18:45.289316"
     },
     {
       "source": "hacker_news",
@@ -20,7 +20,7 @@
       "stars": 1077,
       "daily_stars": 1077,
       "language": "tech",
-      "fetched_at": "2026-02-05T15:46:52.926397"
+      "fetched_at": "2026-02-05T16:18:51.632978"
     },
     {
       "source": "github",
@@ -28,10 +28,10 @@
       "owner": "anthropics",
       "url": "https://github.com/anthropics/skills",
       "description": "Public repository for Agent Skills",
-      "stars": 63791,
+      "stars": 63807,
       "daily_stars": 909,
       "language": "python",
-      "fetched_at": "2026-02-05T15:46:50.255732"
+      "fetched_at": "2026-02-05T16:18:46.639099"
     },
     {
       "source": "github",
@@ -39,10 +39,10 @@
       "owner": "obra",
       "url": "https://github.com/obra/superpowers",
       "description": "An agentic skills framework & software development methodology that works.",
-      "stars": 45095,
+      "stars": 45115,
       "daily_stars": 893,
       "language": "all",
-      "fetched_at": "2026-02-05T15:46:48.934691"
+      "fetched_at": "2026-02-05T16:18:45.291169"
     },
     {
       "source": "github",
@@ -50,21 +50,10 @@
       "owner": "bytedance",
       "url": "https://github.com/bytedance/UI-TARS-desktop",
       "description": "The Open-Source Multimodal AI Agent Stack: Connecting Cutting-Edge AI Models and Agent Infra",
-      "stars": 26551,
+      "stars": 26566,
       "daily_stars": 862,
       "language": "all",
-      "fetched_at": "2026-02-05T15:46:48.931767"
-    },
-    {
-      "source": "github",
-      "name": "prek",
-      "owner": "j178",
-      "url": "https://github.com/j178/prek",
-      "description": "⚡ Better `pre-commit`, re-engineered in Rust",
-      "stars": 5421,
-      "daily_stars": 739,
-      "language": "all",
-      "fetched_at": "2026-02-05T15:46:48.933491"
+      "fetched_at": "2026-02-05T16:18:45.288193"
     },
     {
       "source": "github",
@@ -72,10 +61,10 @@
       "owner": "openai",
       "url": "https://github.com/openai/skills",
       "description": "Skills Catalog for Codex",
-      "stars": 4101,
+      "stars": 4114,
       "daily_stars": 621,
       "language": "all",
-      "fetched_at": "2026-02-05T15:46:48.932288"
+      "fetched_at": "2026-02-05T16:18:45.288717"
     },
     {
       "source": "hacker_news",
@@ -83,10 +72,10 @@
       "owner": "namanyayg",
       "url": "https://nmn.gl/blog/ai-killing-b2b-saas",
       "description": "AI is killing B2B SaaS",
-      "stars": 422,
-      "daily_stars": 422,
+      "stars": 436,
+      "daily_stars": 436,
       "language": "tech",
-      "fetched_at": "2026-02-05T15:46:51.726601"
+      "fetched_at": "2026-02-05T16:18:49.183267"
     },
     {
       "source": "hacker_news",
@@ -94,10 +83,21 @@
       "owner": "fugu2",
       "url": "https://boxc.net/blog/2026/claude-code-connecting-to-local-models-when-your-quota-runs-out/",
       "description": "Claude Code: connect to a local model when your quota runs out",
-      "stars": 338,
-      "daily_stars": 338,
+      "stars": 343,
+      "daily_stars": 343,
       "language": "tech",
-      "fetched_at": "2026-02-05T15:46:51.618362"
+      "fetched_at": "2026-02-05T16:18:48.777775"
+    },
+    {
+      "source": "github",
+      "name": "prek",
+      "owner": "j178",
+      "url": "https://github.com/j178/prek",
+      "description": "⚡ Better `pre-commit`, re-engineered in Rust",
+      "stars": 5425,
+      "daily_stars": 267,
+      "language": "all",
+      "fetched_at": "2026-02-05T16:18:45.289956"
     },
     {
       "source": "hacker_news",
@@ -105,21 +105,10 @@
       "owner": "aspectrr",
       "url": "https://www.fluid.sh/",
       "description": "Claude Code for Infrastructure",
-      "stars": 239,
-      "daily_stars": 239,
+      "stars": 245,
+      "daily_stars": 245,
       "language": "tech",
-      "fetched_at": "2026-02-05T15:46:52.211322"
-    },
-    {
-      "source": "github",
-      "name": "sglang",
-      "owner": "sgl-project",
-      "url": "https://github.com/sgl-project/sglang",
-      "description": "SGLang is a high-performance serving framework for large language models and multimodal models.",
-      "stars": 23320,
-      "daily_stars": 131,
-      "language": "python",
-      "fetched_at": "2026-02-05T15:46:50.258381"
+      "fetched_at": "2026-02-05T16:18:50.006142"
     },
     {
       "source": "hacker_news",
@@ -127,10 +116,21 @@
       "owner": "pelario",
       "url": "https://1password.com/blog/from-magic-to-malware-how-openclaws-agent-skills-become-an-attack-surface",
       "description": "Top downloaded skill in ClawHub contains malware",
-      "stars": 127,
-      "daily_stars": 127,
+      "stars": 164,
+      "daily_stars": 164,
       "language": "tech",
-      "fetched_at": "2026-02-05T15:46:51.339822"
+      "fetched_at": "2026-02-05T16:18:48.158738"
+    },
+    {
+      "source": "github",
+      "name": "sglang",
+      "owner": "sgl-project",
+      "url": "https://github.com/sgl-project/sglang",
+      "description": "SGLang is a high-performance serving framework for large language models and multimodal models.",
+      "stars": 23321,
+      "daily_stars": 131,
+      "language": "python",
+      "fetched_at": "2026-02-05T16:18:46.641827"
     },
     {
       "source": "github",
@@ -138,10 +138,10 @@
       "owner": "QwenLM",
       "url": "https://github.com/QwenLM/Qwen3-Coder",
       "description": "Qwen3-Coder is the code version of Qwen3, the large language model series developed by Qwen team.",
-      "stars": 15309,
+      "stars": 15310,
       "daily_stars": 123,
       "language": "python",
-      "fetched_at": "2026-02-05T15:46:50.259402"
+      "fetched_at": "2026-02-05T16:18:46.642800"
     },
     {
       "source": "hacker_news",
@@ -152,18 +152,29 @@
       "stars": 115,
       "daily_stars": 115,
       "language": "tech",
-      "fetched_at": "2026-02-05T15:46:52.980763"
+      "fetched_at": "2026-02-05T16:18:51.756155"
+    },
+    {
+      "source": "hacker_news",
+      "name": "BMW's Newest \"Innovation\" Is a Logo-Shaped Middle Finger to Right to Repair",
+      "owner": "gnabgib",
+      "url": "https://www.ifixit.com/News/115528/bmws-newest-innovation-is-a-logo-shaped-middle-finger-to-right-to-repair",
+      "description": "BMW's Newest \"Innovation\" Is a Logo-Shaped Middle Finger to Right to Repair",
+      "stars": 106,
+      "daily_stars": 106,
+      "language": "tech",
+      "fetched_at": "2026-02-05T16:18:51.530284"
     },
     {
       "source": "product_hunt",
-      "name": "Higgsfield Vibe-Motion",
+      "name": "Supaboard",
       "owner": "ProductHunt",
-      "url": "https://www.producthunt.com/products/higgsfield",
-      "description": "\n            Create motion images in a single prompt in an editing canvas\n          \n\nDiscussion\n            |\n            Link\n",
+      "url": "https://www.producthunt.com/products/supaboard-ai",
+      "description": "\n            Ask in plain English. Get accurate answers from your data\n          \n\nDiscussion\n            |\n            Link\n",
       "stars": 0,
       "daily_stars": 100,
       "language": "saas",
-      "fetched_at": "2026-02-05T15:46:50.430120"
+      "fetched_at": "2026-02-05T16:18:46.865138"
     },
     {
       "source": "product_hunt",
@@ -174,7 +185,18 @@
       "stars": 0,
       "daily_stars": 100,
       "language": "saas",
-      "fetched_at": "2026-02-05T15:46:50.430322"
+      "fetched_at": "2026-02-05T16:18:46.865374"
+    },
+    {
+      "source": "product_hunt",
+      "name": "Higgsfield Vibe-Motion",
+      "owner": "ProductHunt",
+      "url": "https://www.producthunt.com/products/higgsfield",
+      "description": "\n            Create motion images in a single prompt in an editing canvas\n          \n\nDiscussion\n            |\n            Link\n",
+      "stars": 0,
+      "daily_stars": 100,
+      "language": "saas",
+      "fetched_at": "2026-02-05T16:18:46.865583"
     },
     {
       "source": "product_hunt",
@@ -185,40 +207,7 @@
       "stars": 0,
       "daily_stars": 100,
       "language": "saas",
-      "fetched_at": "2026-02-05T15:46:50.430511"
-    },
-    {
-      "source": "product_hunt",
-      "name": "GitHub Agent HQ",
-      "owner": "ProductHunt",
-      "url": "https://www.producthunt.com/products/github",
-      "description": "\n            Run Claude, Codex & Copilot directly in GitHub & VS Code\n          \n\nDiscussion\n            |\n            Link\n",
-      "stars": 0,
-      "daily_stars": 100,
-      "language": "saas",
-      "fetched_at": "2026-02-05T15:46:50.430702"
-    },
-    {
-      "source": "product_hunt",
-      "name": "Miro MCP",
-      "owner": "ProductHunt",
-      "url": "https://www.producthunt.com/products/miro",
-      "description": "\n            Turn code into visual docs, board context into code\n          \n\nDiscussion\n            |\n            Link\n",
-      "stars": 0,
-      "daily_stars": 100,
-      "language": "saas",
-      "fetched_at": "2026-02-05T15:46:50.430903"
-    },
-    {
-      "source": "product_hunt",
-      "name": "PopAir",
-      "owner": "ProductHunt",
-      "url": "https://www.producthunt.com/products/popair-the-native-ai-copilot-for-macos",
-      "description": "\n            Multi-model AI that works inside any app. Light & fast.\n          \n\nDiscussion\n            |\n            Link\n",
-      "stars": 0,
-      "daily_stars": 100,
-      "language": "saas",
-      "fetched_at": "2026-02-05T15:46:50.431094"
+      "fetched_at": "2026-02-05T16:18:46.865782"
     },
     {
       "source": "product_hunt",
@@ -229,29 +218,51 @@
       "stars": 0,
       "daily_stars": 100,
       "language": "saas",
-      "fetched_at": "2026-02-05T15:46:50.431274"
+      "fetched_at": "2026-02-05T16:18:46.865973"
     },
     {
       "source": "product_hunt",
-      "name": "Therapist AI",
+      "name": "PopAir",
       "owner": "ProductHunt",
-      "url": "https://www.producthunt.com/products/therapist-ai-time-for-what-matters",
-      "description": "\n            Built by Therapists, For Therapists\n          \n\nDiscussion\n            |\n            Link\n",
+      "url": "https://www.producthunt.com/products/popair-the-native-ai-copilot-for-macos",
+      "description": "\n            Multi-model AI that works inside any app. Light & fast.\n          \n\nDiscussion\n            |\n            Link\n",
       "stars": 0,
       "daily_stars": 100,
       "language": "saas",
-      "fetched_at": "2026-02-05T15:46:50.431452"
+      "fetched_at": "2026-02-05T16:18:46.866176"
     },
     {
       "source": "product_hunt",
-      "name": "Agent Sandbox",
+      "name": "Voxtral Transcribe 2 by Mistral",
       "owner": "ProductHunt",
-      "url": "https://www.producthunt.com/products/agent-sandbox",
-      "description": "\n            Your agent's personal remote computer and drive\n          \n\nDiscussion\n            |\n            Link\n",
+      "url": "https://www.producthunt.com/products/mistral-7b",
+      "description": "\n            Real-time speech-to-text with speaker diarization\n          \n\nDiscussion\n            |\n            Link\n",
       "stars": 0,
       "daily_stars": 100,
       "language": "saas",
-      "fetched_at": "2026-02-05T15:46:50.431636"
+      "fetched_at": "2026-02-05T16:18:46.866385"
+    },
+    {
+      "source": "product_hunt",
+      "name": "AutoBandStudio",
+      "owner": "ProductHunt",
+      "url": "https://www.producthunt.com/products/autobandstudio",
+      "description": "\n            AI that turns your melody into a full arrangement\n          \n\nDiscussion\n            |\n            Link\n",
+      "stars": 0,
+      "daily_stars": 100,
+      "language": "saas",
+      "fetched_at": "2026-02-05T16:18:46.866583"
+    },
+    {
+      "source": "product_hunt",
+      "name": "Miro MCP",
+      "owner": "ProductHunt",
+      "url": "https://www.producthunt.com/products/miro",
+      "description": "\n            Turn code into visual docs, board context into code\n          \n\nDiscussion\n            |\n            Link\n",
+      "stars": 0,
+      "daily_stars": 100,
+      "language": "saas",
+      "fetched_at": "2026-02-05T16:18:46.866782"
     },
     {
       "source": "product_hunt",
@@ -262,7 +273,7 @@
       "stars": 0,
       "daily_stars": 100,
       "language": "saas",
-      "fetched_at": "2026-02-05T15:46:50.431816"
+      "fetched_at": "2026-02-05T16:18:46.866972"
     },
     {
       "source": "github",
@@ -273,7 +284,7 @@
       "stars": 1028,
       "daily_stars": 98,
       "language": "python",
-      "fetched_at": "2026-02-05T15:46:50.255250"
+      "fetched_at": "2026-02-05T16:18:46.638626"
     },
     {
       "source": "github",
@@ -281,10 +292,10 @@
       "owner": "ZeroTworu",
       "url": "https://github.com/ZeroTworu/anet",
       "description": "Simple Rust VPN Client / Server",
-      "stars": 304,
+      "stars": 307,
       "daily_stars": 79,
       "language": "all",
-      "fetched_at": "2026-02-05T15:46:48.937027"
+      "fetched_at": "2026-02-05T16:18:45.293563"
     },
     {
       "source": "github",
@@ -292,10 +303,10 @@
       "owner": "topoteretes",
       "url": "https://github.com/topoteretes/cognee",
       "description": "Memory for AI Agents in 6 lines of code",
-      "stars": 11758,
+      "stars": 11762,
       "daily_stars": 69,
       "language": "all",
-      "fetched_at": "2026-02-05T15:46:48.934098"
+      "fetched_at": "2026-02-05T16:18:45.290577"
     },
     {
       "source": "github",
@@ -303,10 +314,10 @@
       "owner": "GH05TCREW",
       "url": "https://github.com/GH05TCREW/pentestagent",
       "description": "PentestAgent is an AI agent framework for black-box security testing, supporting bug bounty, red-team, and penetration testing workflows.",
-      "stars": 1395,
+      "stars": 1397,
       "daily_stars": 56,
       "language": "python",
-      "fetched_at": "2026-02-05T15:46:50.256213"
+      "fetched_at": "2026-02-05T16:18:46.639592"
     },
     {
       "source": "github",
@@ -314,10 +325,10 @@
       "owner": "aquasecurity",
       "url": "https://github.com/aquasecurity/trivy",
       "description": "Find vulnerabilities, misconfigurations, secrets, SBOM in containers, Kubernetes, code repositories, clouds and more",
-      "stars": 31308,
+      "stars": 31313,
       "daily_stars": 45,
       "language": "all",
-      "fetched_at": "2026-02-05T15:46:48.935171"
+      "fetched_at": "2026-02-05T16:18:45.291658"
     },
     {
       "source": "github",
@@ -325,10 +336,10 @@
       "owner": "linshenkx",
       "url": "https://github.com/linshenkx/prompt-optimizer",
       "description": "一款提示词优化器，助力于编写高质量的提示词",
-      "stars": 19282,
+      "stars": 19286,
       "daily_stars": 45,
       "language": "all",
-      "fetched_at": "2026-02-05T15:46:48.936572"
+      "fetched_at": "2026-02-05T16:18:45.293100"
     },
     {
       "source": "github",
@@ -336,10 +347,32 @@
       "owner": "frappe",
       "url": "https://github.com/frappe/erpnext",
       "description": "Free and Open Source Enterprise Resource Planning (ERP)",
-      "stars": 31541,
+      "stars": 31542,
       "daily_stars": 41,
       "language": "python",
-      "fetched_at": "2026-02-05T15:46:50.257291"
+      "fetched_at": "2026-02-05T16:18:46.640713"
+    },
+    {
+      "source": "qiita",
+      "name": "なぜ \"財源確保のため増税\" しても日本は豊かにならないのか : Pythonで学ぶ マクロ経済学入門 (30)",
+      "owner": "maskot1977",
+      "url": "https://qiita.com/maskot1977/items/cdddf008c13f3279c9a4",
+      "description": "なぜ \"財源確保のため増税\" しても日本は豊かにならないのか : Pythonで学ぶ マクロ経済学入門 (30)",
+      "stars": 40,
+      "daily_stars": 40,
+      "language": "japanese",
+      "fetched_at": "2026-02-05T16:18:53.380188"
+    },
+    {
+      "source": "qiita",
+      "name": "「大分は医療分散度1位」の真実を追う！22年分のデータが語る医療アクセス改善の物語",
+      "owner": "sai3desuyo",
+      "url": "https://qiita.com/sai3desuyo/items/5cb324fcea8add37f44c",
+      "description": "「大分は医療分散度1位」の真実を追う！22年分のデータが語る医療アクセス改善の物語",
+      "stars": 40,
+      "daily_stars": 40,
+      "language": "japanese",
+      "fetched_at": "2026-02-05T16:18:53.380201"
     },
     {
       "source": "qiita",
@@ -350,7 +383,7 @@
       "stars": 40,
       "daily_stars": 40,
       "language": "japanese",
-      "fetched_at": "2026-02-05T15:46:53.898542"
+      "fetched_at": "2026-02-05T16:18:53.380208"
     },
     {
       "source": "qiita",
@@ -361,29 +394,7 @@
       "stars": 40,
       "daily_stars": 40,
       "language": "japanese",
-      "fetched_at": "2026-02-05T15:46:53.898556"
-    },
-    {
-      "source": "qiita",
-      "name": "PythonとJinja2で、FPGAのレジスタマップ作成から解放される話（ExcelからVerilog自動生成）",
-      "owner": "Satoshi5",
-      "url": "https://qiita.com/Satoshi5/items/3011b3e4a65ea10f4dce",
-      "description": "PythonとJinja2で、FPGAのレジスタマップ作成から解放される話（ExcelからVerilog自動生成）",
-      "stars": 40,
-      "daily_stars": 40,
-      "language": "japanese",
-      "fetched_at": "2026-02-05T15:46:53.898563"
-    },
-    {
-      "source": "qiita",
-      "name": "python 基本構文",
-      "owner": "Linux_box",
-      "url": "https://qiita.com/Linux_box/items/27d9dbf920e3fb9191f7",
-      "description": "python 基本構文",
-      "stars": 40,
-      "daily_stars": 40,
-      "language": "japanese",
-      "fetched_at": "2026-02-05T15:46:53.898569"
+      "fetched_at": "2026-02-05T16:18:53.380214"
     },
     {
       "source": "qiita",
@@ -394,7 +405,7 @@
       "stars": 40,
       "daily_stars": 40,
       "language": "japanese",
-      "fetched_at": "2026-02-05T15:46:54.126387"
+      "fetched_at": "2026-02-05T16:18:53.672845"
     },
     {
       "source": "qiita",
@@ -405,7 +416,7 @@
       "stars": 40,
       "daily_stars": 40,
       "language": "japanese",
-      "fetched_at": "2026-02-05T15:46:54.126398"
+      "fetched_at": "2026-02-05T16:18:53.672851"
     },
     {
       "source": "qiita",
@@ -416,18 +427,7 @@
       "stars": 40,
       "daily_stars": 40,
       "language": "japanese",
-      "fetched_at": "2026-02-05T15:46:54.126405"
-    },
-    {
-      "source": "qiita",
-      "name": "AIを使用した開発をやってみての感想",
-      "owner": "MinadukiSekina",
-      "url": "https://qiita.com/MinadukiSekina/items/f33a0043789f1b20615d",
-      "description": "AIを使用した開発をやってみての感想",
-      "stars": 40,
-      "daily_stars": 40,
-      "language": "japanese",
-      "fetched_at": "2026-02-05T15:46:54.126410"
+      "fetched_at": "2026-02-05T16:18:53.672857"
     },
     {
       "source": "qiita",
@@ -438,7 +438,7 @@
       "stars": 40,
       "daily_stars": 40,
       "language": "japanese",
-      "fetched_at": "2026-02-05T15:46:54.345455"
+      "fetched_at": "2026-02-05T16:18:53.947767"
     },
     {
       "source": "qiita",
@@ -449,7 +449,7 @@
       "stars": 40,
       "daily_stars": 40,
       "language": "japanese",
-      "fetched_at": "2026-02-05T15:46:54.345467"
+      "fetched_at": "2026-02-05T16:18:53.947780"
     },
     {
       "source": "qiita",
@@ -460,7 +460,7 @@
       "stars": 40,
       "daily_stars": 40,
       "language": "japanese",
-      "fetched_at": "2026-02-05T15:46:54.345473"
+      "fetched_at": "2026-02-05T16:18:53.947787"
     },
     {
       "source": "qiita",
@@ -471,7 +471,7 @@
       "stars": 40,
       "daily_stars": 40,
       "language": "japanese",
-      "fetched_at": "2026-02-05T15:46:54.345479"
+      "fetched_at": "2026-02-05T16:18:53.947793"
     },
     {
       "source": "github",
@@ -479,10 +479,10 @@
       "owner": "JerBouma",
       "url": "https://github.com/JerBouma/FinanceDatabase",
       "description": "This is a database of 300.000+ symbols containing Equities, ETFs, Funds, Indices, Currencies, Cryptocurrencies and Money Markets.",
-      "stars": 6873,
+      "stars": 6874,
       "daily_stars": 37,
       "language": "python",
-      "fetched_at": "2026-02-05T15:46:50.257902"
+      "fetched_at": "2026-02-05T16:18:46.641324"
     },
     {
       "source": "github",
@@ -490,10 +490,10 @@
       "owner": "nvm-sh",
       "url": "https://github.com/nvm-sh/nvm",
       "description": "Node Version Manager - POSIX-compliant bash script to manage multiple active node.js versions",
-      "stars": 91338,
+      "stars": 91342,
       "daily_stars": 35,
       "language": "all",
-      "fetched_at": "2026-02-05T15:46:48.936113"
+      "fetched_at": "2026-02-05T16:18:45.292632"
     },
     {
       "source": "github",
@@ -501,10 +501,10 @@
       "owner": "Polymarket",
       "url": "https://github.com/Polymarket/agents",
       "description": "Trade autonomously on Polymarket using AI Agents",
-      "stars": 2016,
+      "stars": 2018,
       "daily_stars": 32,
       "language": "python",
-      "fetched_at": "2026-02-05T15:46:50.259883"
+      "fetched_at": "2026-02-05T16:18:46.643274"
     },
     {
       "source": "github",
@@ -512,10 +512,10 @@
       "owner": "fish-shell",
       "url": "https://github.com/fish-shell/fish-shell",
       "description": "The user-friendly command line shell.",
-      "stars": 32312,
+      "stars": 32317,
       "daily_stars": 31,
       "language": "all",
-      "fetched_at": "2026-02-05T15:46:48.935637"
+      "fetched_at": "2026-02-05T16:18:45.292136"
     },
     {
       "source": "github",
@@ -526,7 +526,7 @@
       "stars": 10062,
       "daily_stars": 19,
       "language": "python",
-      "fetched_at": "2026-02-05T15:46:50.258921"
+      "fetched_at": "2026-02-05T16:18:46.642305"
     },
     {
       "source": "github",
@@ -537,7 +537,7 @@
       "stars": 8080,
       "daily_stars": 18,
       "language": "python",
-      "fetched_at": "2026-02-05T15:46:50.256808"
+      "fetched_at": "2026-02-05T16:18:46.640203"
     }
   ],
   "x_hot_words": [
