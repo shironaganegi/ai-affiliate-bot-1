@@ -5,6 +5,10 @@ import requests
 import json
 from atproto import Client
 from datetime import datetime
+from dotenv import load_dotenv
+
+# Load env variables for local testing
+load_dotenv()
 
 def get_latest_article():
     """Finds the latest article in the Zenn articles directory."""
