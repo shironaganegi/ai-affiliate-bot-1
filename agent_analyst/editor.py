@@ -1,13 +1,12 @@
 import os
-import google.generativeai as genai
+# import google.generativeai as genai # REMOVED
+from agent_analyst.llm_client import get_gemini_response
 from dotenv import load_dotenv
 
 load_dotenv()
 
-# Configure Gemini
+# Configure Gemini - API Key check is done inside llm_client
 api_key = os.getenv("GEMINI_API_KEY")
-if api_key:
-    genai.configure(api_key=api_key)
 
 def refine_article(draft_text):
     """
@@ -42,28 +41,29 @@ def refine_article(draft_text):
         prompt = f"{system_prompt}\n\n以下が編集対象の原稿です（出力は記事本文のみ）：\n\n{draft_text}"
 
         candidate_models = [
-            'gemini-2.5-flash',
-            'gemini-2.0-flash',
-            'gemini-flash-latest',
-            'gemini-2.0-flash-exp',
+            'gemini-1.5-flash',
             'gemini-1.5-pro',
-            'gemini-1.5-flash'
+            'gemini-1.0-pro'
         ]
 
-        response = None
+        response_data = None
         for model_name in candidate_models:
-            try:
-                model = genai.GenerativeModel(model_name)
-                response = model.generate_content(prompt)
-                print(f"Editor optimized using: {model_name}")
+            print(f"Editor optimizing using: {model_name}...")
+            # No JSON constraint, we want raw text (markdown)
+            response_data = get_gemini_response(prompt, model_name)
+            if response_data:
                 break
-            except Exception:
-                continue
                 
-        if not response:
-            raise Exception("All editor models failed.")
+        if not response_data:
+            print("All editor models failed.")
+            return draft_text
 
-        return response.text
+        # Extract text from REST response
+        try:
+            return response_data["candidates"][0]["content"]["parts"][0]["text"]
+        except (KeyError, IndexError, TypeError):
+             print(f"Editor response parsing failed: {response_data}")
+             return draft_text
 
     except Exception as e:
         print(f"Editor refinement failed: {e}")

@@ -148,50 +148,7 @@ def translate_article_to_english(content):
         return response.text
     return None
 
-import requests
-import json
-
-def get_gemini_response(prompt, model_name):
-    """
-    Sends a direct REST API request to Google Gemini.
-    """
-    api_key = os.getenv("GEMINI_API_KEY")
-    if not api_key:
-        print("Error: GEMINI_API_KEY not found.")
-        return None
-
-    # Determine endpoint based on model name (handling both simple and full names)
-    # Ensure usage of v1beta endpoint which is currently most stable for these models
-    if "models/" not in model_name:
-        model_name = f"models/{model_name}"
-        
-    url = f"https://generativelanguage.googleapis.com/v1beta/{model_name}:generateContent?key={api_key}"
-    
-    headers = {
-        "Content-Type": "application/json"
-    }
-    
-    payload = {
-        "contents": [{
-            "parts": [{"text": prompt}]
-        }],
-        "generationConfig": {
-            "response_mime_type": "application/json" # Request JSON output specifically
-        }
-    }
-    
-    try:
-        response = requests.post(url, headers=headers, json=payload, timeout=60)
-        
-        if response.status_code != 200:
-            print(f"API Error ({response.status_code}): {response.text}")
-            return None
-            
-        return response.json()
-        
-    except Exception as e:
-        print(f"Request failed: {e}")
-        return None
+from agent_analyst.llm_client import get_gemini_response
 
 def call_gemini_with_fallback(prompt):
     # Use full resource names for v1beta
@@ -207,7 +164,8 @@ def call_gemini_with_fallback(prompt):
         # Determine strict model ID for APIURL if needed, but 'gemini-1.5-flash' usually works as alias
         # Let's try the alias first.
         
-        data = get_gemini_response(prompt, model_name)
+        # Enforce JSON output for content generation
+        data = get_gemini_response(prompt, model_name, generation_config={"response_mime_type": "application/json"})
         if data:
             # Parse response structure
             try:
