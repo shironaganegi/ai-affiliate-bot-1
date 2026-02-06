@@ -314,6 +314,23 @@ def main():
     else:
         print("No English translation found. Skipping EN distribution.")
     
+    
+    # 6. Discord Notification
+    try:
+        from agent_publisher.discord_notifier import send_discord_notification
+        
+        discord_webhook = os.getenv("DISCORD_WEBHOOK_URL")
+        # Reuse extracted X post or create fallback
+        x_text_for_discord = x_viral_text if 'x_viral_text' in locals() else fallback_text
+        
+        if discord_webhook:
+             send_discord_notification(discord_webhook, title, zenn_url, x_text_for_discord)
+        else:
+             print("Skipping Discord notification (No Webhook URL).")
+
+    except Exception as e:
+        print(f"Failed to send Discord notification: {e}")
+        
     print("--- Distribution Completed ---")
 
 if __name__ == "__main__":
