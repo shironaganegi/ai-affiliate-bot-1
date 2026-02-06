@@ -1,7 +1,8 @@
 import os
 import glob
-from playwright.sync_api import sync_playwright
+import re
 import sys
+from playwright.sync_api import sync_playwright
 
 # Ensure stdout handles unicode
 if sys.stdout.encoding:
@@ -14,7 +15,10 @@ def generate_ogp(tool_name, catchphrase):
     template_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "ogp_template.html"))
     output_dir = os.path.join(os.path.dirname(__file__), "..", "data", "images")
     os.makedirs(output_dir, exist_ok=True)
-    output_path = os.path.join(output_dir, f"ogp_{tool_name}.png")
+    
+    # Sanitize filename (remove colons, slashes, etc.)
+    safe_name = re.sub(r'[\\/:*?"<>|]', '_', tool_name)
+    output_path = os.path.join(output_dir, f"ogp_{safe_name}.png")
 
     with sync_playwright() as p:
         browser = p.chromium.launch()
