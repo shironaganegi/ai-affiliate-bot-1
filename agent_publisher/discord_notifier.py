@@ -79,6 +79,45 @@ if __name__ == "__main__":
     if not webhook_url:
         print("ERROR: DISCORD_WEBHOOK_URL environment variable not set.")
         exit(1)
+        
+    # Find the latest article
+    articles_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), "articles")
+    markdown_files = glob.glob(os.path.join(articles_dir, "*.md"))
     
-    send_discord_notification(webhook_url)
+    if not markdown_files:
+        print("No articles found to notify.")
+        exit(0)
+        
+    # Sort by modification time, newest first
+    latest_file = max(markdown_files, key=os.path.getmtime)
+    print(f"Latest article found: {latest_file}")
+    
+    try:
+        with open(latest_file, 'r', encoding='utf-8') as f:
+            content = f.read()
+            
+        # Extract title (simple regex for markdown header or frontmatter)
+        # Assuming frontmatter title: "title: ..."
+        title_match = re.search(r'^title:\s*(.+)$', content, re.MULTILINE)
+        if title_match:
+            title = title_match.group(1).strip().strip('"').strip("'")
+        else:
+            # Fallback to H1
+            h1_match = re.search(r'^#\s+(.+)$', content, re.MULTILINE)
+            title = h1_match.group(1).strip() if h1_match else "No Title Found"
+            
+        # Construct a dummy URL (since we don't know the deployed URL yet easily)
+        # Using filename as slug
+        filename = os.path.basename(latest_file)
+        slug = os.path.splitext(filename)[0]
+        # Assuming typical GitHub Pages structure
+        zenn_url = f"https://shironaganegi.github.io/ai-affiliate-bot-1/articles/{slug}/"
+        
+        x_post_text = f"【最新記事】{title}\n\nAIがトレンドを分析して自動執筆しました！\n詳細はこちら 👉 {zenn_url} #AI #Tech"
+        
+        send_discord_notification(webhook_url, title, zenn_url, x_post_text)
+        
+    except Exception as e:
+        print(f"Failed to parse article or send notification: {e}")
+        exit(1)
 
