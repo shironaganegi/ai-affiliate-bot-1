@@ -38,17 +38,16 @@ def _search_rakuten(keyword):
             url = item.get("affiliateUrl")
             image = item.get("mediumImageUrls", [{}])[0].get("imageUrl")
             
-            html = f"""
-<div class="recommend-box" style="border: 1px border #eee; padding: 15px; margin: 10px 0; border-radius: 8px; display: flex; align-items: center; gap: 15px;">
-    <img src="{image}" alt="{name}" style="width: 100px; height: 100px; object-fit: cover;">
-    <div>
-        <h4 style="margin: 0 0 10px 0; font-size: 16px;">{name}</h4>
-        <p style="margin: 0 0 10px 0; font-weight: bold; color: #e44d26;">価格: {price}円</p>
-        <a href="{url}" rel="nofollow" target="_blank" style="background: #bf0000; color: #fff; padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 14px;">楽天市場で見る</a>
-    </div>
-</div>
+            # Use Markdown instead of HTML for Zenn compatibility
+            # Zenn Format:
+            # [![Image](ImageURL)](AffiliateURL)
+            # [ItemName](AffiliateURL) (Current Price: X Yen)
+            
+            markdown = f"""
+[![{name}]({image})]({url})
+[{name}]({url}) (価格: {price}円)
 """
-            html_results.append(html)
+            html_results.append(markdown)
         return html_results
 
     except Exception as e:
