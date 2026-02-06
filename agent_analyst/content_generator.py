@@ -5,7 +5,7 @@ import sys
 import os
 import json
 import re
-import google.generativeai as genai
+
 from agent_analyst.failure_miner import mine_failures
 from agent_analyst.ad_inventory import AD_CAMPAIGNS
 from agent_analyst.product_recommender import search_related_items
@@ -29,12 +29,9 @@ logger = setup_logging(__name__)
 
 # Configure Gemini
 api_key = os.getenv("GEMINI_API_KEY")
-if not api_key or api_key.startswith("your_gemini"):
-    # Fallback/Mock for demonstration if no key is present or is placeholder
-    api_key = None
-    logger.warning("WARNING: GEMINI_API_KEY is missing or invalid. Using mock generation mode.")
-else:
-    genai.configure(api_key=api_key)
+if not api_key:
+    # Warning logic is handled inside get_gemini_response now, but good to keep a startup check or just pass.
+    pass
 
 def get_readme_content(github_url):
     """
@@ -151,20 +148,82 @@ def translate_article_to_english(content):
         return response.text
     return None
 
+import requests
+import json
+
+def get_gemini_response(prompt, model_name):
+    """
+    Sends a direct REST API request to Google Gemini.
+    """
+    api_key = os.getenv("GEMINI_API_KEY")
+    if not api_key:
+        print("Error: GEMINI_API_KEY not found.")
+        return None
+
+    # Determine endpoint based on model name (handling both simple and full names)
+    # Ensure usage of v1beta endpoint which is currently most stable for these models
+    if "models/" not in model_name:
+        model_name = f"models/{model_name}"
+        
+    url = f"https://generativelanguage.googleapis.com/v1beta/{model_name}:generateContent?key={api_key}"
+    
+    headers = {
+        "Content-Type": "application/json"
+    }
+    
+    payload = {
+        "contents": [{
+            "parts": [{"text": prompt}]
+        }],
+        "generationConfig": {
+            "response_mime_type": "application/json" # Request JSON output specifically
+        }
+    }
+    
+    try:
+        response = requests.post(url, headers=headers, json=payload, timeout=60)
+        
+        if response.status_code != 200:
+            print(f"API Error ({response.status_code}): {response.text}")
+            return None
+            
+        return response.json()
+        
+    except Exception as e:
+        print(f"Request failed: {e}")
+        return None
+
 def call_gemini_with_fallback(prompt):
+    # Use full resource names for v1beta
     candidate_models = [
-        "gemini-pro",
-        "models/gemini-1.5-flash-latest",
-        "gemini-1.5-pro-latest"
+        "gemini-1.5-flash",
+        "gemini-1.5-pro",
+        "gemini-1.0-pro" # Fallback to older stable if 1.5 fails
     ]
+    
     for model_name in candidate_models:
-        try:
-            print(f"Trying model: {model_name}...")
-            model = genai.GenerativeModel(model_name)
-            return model.generate_content(prompt, generation_config={"response_mime_type": "application/json"})
-        except Exception as e:
-            print(f"Model {model_name} failed: {e}")
-            continue
+        print(f"Trying model: {model_name}...")
+        
+        # Determine strict model ID for APIURL if needed, but 'gemini-1.5-flash' usually works as alias
+        # Let's try the alias first.
+        
+        data = get_gemini_response(prompt, model_name)
+        if data:
+            # Parse response structure
+            try:
+                # Structure: candidates[0].content.parts[0].text
+                text = data["candidates"][0]["content"]["parts"][0]["text"]
+                
+                # Mock a response object to match previous interface expected by caller
+                class MockResponse:
+                    def __init__(self, text):
+                        self.text = text
+                return MockResponse(text)
+                
+            except (KeyError, IndexError) as e:
+                print(f"Failed to parse response from {model_name}: {e}")
+                continue
+                
     return None
 
 def clean_json_text(text):
