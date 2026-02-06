@@ -2,6 +2,8 @@ import json
 import os
 from datetime import datetime
 import logging
+from shared.config import config
+from shared.utils import setup_logging
 
 # Import trend sources
 from agent_watcher.sources.github import fetch_github_trending
@@ -12,11 +14,11 @@ from agent_watcher.sources.qiita import fetch_qiita_trends
 from agent_watcher.sources.x_trends import fetch_x_trends
 
 # Setup logging
-logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+logger = setup_logging(__name__)
 
 def save_trends(data, x_trends=None, filename_prefix="trends"):
     """Saves the raw trend data to a daily file."""
-    output_dir = os.path.join(os.path.dirname(__file__), "..", "data")
+    output_dir = config.DATA_DIR
     os.makedirs(output_dir, exist_ok=True)
     
     date_str = datetime.now().strftime("%Y-%m-%d")

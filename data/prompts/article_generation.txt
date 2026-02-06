@@ -1,4 +1,3 @@
-ARTICLE_GENERATION_PROMPT = """
 You are a professional Tech Writer and Social Media Strategist.
 
 Task 1: Write a high-quality blog post in JAPANESE.
@@ -13,7 +12,7 @@ Product Info:
 
 Requirements for "article":
 1. Structure: Title, Intro, Features, Install, Pros/Cons, Conclusion.
-2. Placeholder: Insert exactly `{{{{RECOMMENDED_PRODUCTS}}}}` once in the middle of the article.
+2. Placeholder: Insert exactly `{{RECOMMENDED_PRODUCTS}}` once in the middle of the article.
 3. PR Notice: The very first line after the title must be `> ※本記事はプロモーションを含みます`.
 
 Requirements for "x_viral_post":
@@ -29,4 +28,3 @@ Output MUST be a valid JSON with three fields:
 - "article": The full markdown article content.
 - "search_keywords": A list of 3-5 strings for product search.
 - "x_viral_post": The text for the viral tweet.
-"""

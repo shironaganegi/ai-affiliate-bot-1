@@ -2,23 +2,25 @@ import os
 import time
 import logging
 from datetime import datetime, timedelta
+from shared.config import config
+from shared.utils import setup_logging
 
 # Setup logging
-logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+logger = setup_logging(__name__)
 
 def clean_old_files(directory, days=30):
     """
     Deletes files in the specified directory that are older than the given number of days.
     """
     if not os.path.exists(directory):
-        logging.info(f"Directory {directory} does not exist. Skipping cleanup.")
+        logger.info(f"Directory {directory} does not exist. Skipping cleanup.")
         return
 
     now = time.time()
     cutoff = now - (days * 86400) # 86400 seconds in a day
     
     deleted_count = 0
-    logging.info(f"Starting cleanup in {directory} (Removing files older than {days} days)")
+    logger.info(f"Starting cleanup in {directory} (Removing files older than {days} days)")
 
     for filename in os.listdir(directory):
         filepath = os.path.join(directory, filename)
@@ -33,12 +35,12 @@ def clean_old_files(directory, days=30):
         if file_mtime < cutoff:
             try:
                 os.remove(filepath)
-                logging.info(f"Deleted old file: {filename}")
+                logger.info(f"Deleted old file: {filename}")
                 deleted_count += 1
             except Exception as e:
-                logging.error(f"Failed to delete {filename}: {e}")
+                logger.error(f"Failed to delete {filename}: {e}")
 
-    logging.info(f"Cleanup finished. Deleted {deleted_count} files.")
+    logger.info(f"Cleanup finished. Deleted {deleted_count} files.")
 
 def clean_error_files(directory):
     """
@@ -46,7 +48,7 @@ def clean_error_files(directory):
     """
     if not os.path.exists(directory): return
     
-    logging.info(f"Checking for failed articles in {directory}...")
+    logger.info(f"Checking for failed articles in {directory}...")
     deleted = 0
     for filename in os.listdir(directory):
         if not filename.endswith(".md"): continue
@@ -59,30 +61,25 @@ def clean_error_files(directory):
             # Check for error signature
             if "記事生成に失敗しました" in content or "ModelError" in content or "Quota exceeded" in content:
                 os.remove(filepath)
-                logging.warning(f"Deleted failed article: {filename}")
+                logger.warning(f"Deleted failed article: {filename}")
                 deleted += 1
         except Exception as e:
-            logging.error(f"Error checking file {filename}: {e}")
+            logger.error(f"Error checking file {filename}: {e}")
             
-    logging.info(f"Error cleanup finished. Deleted {deleted} failed files.")
+    logger.info(f"Error cleanup finished. Deleted {deleted} failed files.")
 
 if __name__ == "__main__":
-    # Define directories to clean
-    base_dir = os.path.join(os.path.dirname(__file__), "..")
-    articles_dir = os.path.join(base_dir, "articles")
-    data_dir = os.path.join(base_dir, "data")
-    images_dir = os.path.join(data_dir, "images")
-
     # Clean articles and generated images older than 30 days
-    clean_old_files(articles_dir, days=30)
+    clean_old_files(config.ARTICLES_DIR, days=30)
+    # Use config.DATA_DIR + images manually or extend config later if 'images' becomes standard
+    images_dir = os.path.join(config.DATA_DIR, "images")
     clean_old_files(images_dir, days=30)
     
     # Clean failed articles (both in internal storage and Hugo site)
-    clean_error_files(articles_dir)
+    clean_error_files(config.ARTICLES_DIR)
     
     # Clean English articles directory
-    en_articles_dir = os.path.join(data_dir, "articles_en")
-    clean_old_files(en_articles_dir, days=30)
-    clean_error_files(en_articles_dir)
+    clean_old_files(config.EN_ARTICLES_DIR, days=30)
+    clean_error_files(config.EN_ARTICLES_DIR)
 
-    clean_error_files(os.path.join(base_dir, "website", "content", "posts"))
+    clean_error_files(config.WEBSITE_CONTENT_DIR)

@@ -5,14 +5,16 @@ import sys
 import os
 import json
 import re
+import random
+import string
+import logging
 
 from agent_analyst.failure_miner import mine_failures
-from agent_analyst.ad_inventory import AD_CAMPAIGNS
 from agent_analyst.product_recommender import search_related_items
 from agent_analyst.editor import refine_article
-from agent_analyst.prompts import ARTICLE_GENERATION_PROMPT
-from shared.utils import setup_logging, safe_requests_get, load_config
-import random
+from agent_analyst.llm import llm_client
+from shared.config import config
+from shared.utils import setup_logging, safe_requests_get
 
 # Suppress deprecation warnings
 warnings.filterwarnings("ignore", category=FutureWarning)
@@ -21,26 +23,14 @@ warnings.filterwarnings("ignore", category=FutureWarning)
 if sys.stdout.encoding:
     sys.stdout.reconfigure(encoding='utf-8')
 
-# Load environment variables
-load_config()
-
 # Configure Logging
 logger = setup_logging(__name__)
-
-# Configure Gemini
-api_key = os.getenv("GEMINI_API_KEY")
-if not api_key:
-    # Warning logic is handled inside get_gemini_response now, but good to keep a startup check or just pass.
-    pass
 
 def get_readme_content(github_url):
     """
     Fetches the README content from a GitHub repository to give context to the LLM.
     """
     try:
-        # Convert https://github.com/user/repo -> https://raw.githubusercontent.com/user/repo/main/README.md
-        # This is a naive guess, but works for most. 
-        # Better robust way is using GitHub API, but lets try raw link for simplicity.
         parts = github_url.strip("/").split("/")
         if len(parts) >= 5:
             user = parts[3]
@@ -63,7 +53,13 @@ def get_readme_content(github_url):
     
     return "No detailed documentation found."
 
-from agent_analyst.prompts import ARTICLE_GENERATION_PROMPT
+def load_ads():
+    try:
+        with open(config.ADS_FILE, "r", encoding="utf-8") as f:
+            return json.load(f)
+    except Exception as e:
+        logger.error(f"Failed to load ads from {config.ADS_FILE}: {e}")
+        return []
 
 def generate_article(tool_data, x_hot_words=[]):
     """
@@ -79,7 +75,11 @@ def generate_article(tool_data, x_hot_words=[]):
     x_context = ", ".join(x_hot_words[:10])
     
     # 1. Prepare Prompt
-    prompt = ARTICLE_GENERATION_PROMPT.format(
+    prompt_template = llm_client.load_prompt(os.path.join(config.PROMPTS_DIR, "article_generation.txt"))
+    if not prompt_template:
+        return f"# {name}\n\nMetrics error: Prompt file missing."
+
+    prompt = prompt_template.format(
         name=name,
         url=url,
         description=description,
@@ -88,17 +88,17 @@ def generate_article(tool_data, x_hot_words=[]):
         x_context=x_context
     )
 
-    if not api_key:
+    if not config.GEMINI_API_KEY:
         return f"# {name}\n> ※本記事はプロモーションを含みます\nMock content.\n{{{{RECOMMENDED_PRODUCTS}}}}"
 
     # 2. Call Gemini
-    response = call_gemini_with_fallback(prompt)
-    if not response:
-        return f"# {name}\n\n記事生成に失敗しました（全てのモデルでエラーまたはタイムアウト）。ログを確認してください。"
+    response_text = llm_client.generate_content(prompt)
+    if not response_text:
+        return f"# {name}\n\n記事生成に失敗しました（エラーまたはタイムアウト）。ログを確認してください。"
 
     # 3. Parse JSON & Extract Content
     try:
-        content_text = clean_json_text(response.text)
+        content_text = clean_json_text(response_text)
         res_json = json.loads(content_text)
         
         draft = res_json.get("article", "")
@@ -107,7 +107,7 @@ def generate_article(tool_data, x_hot_words=[]):
         
     except (json.JSONDecodeError, AttributeError):
         print("CRITICAL: JSON Parsing Failed. Converting raw text.")
-        return f"# {name}\n> ※本記事はプロモーションを含みます\n\n{response.text}"
+        return f"# {name}\n> ※本記事はプロモーションを含みます\n\n{response_text}"
 
     # 4. Inject Affiliate Products
     final_article = inject_products(draft, keywords)
@@ -143,47 +143,7 @@ def translate_article_to_english(content):
     {content}
     """
     
-    response = call_gemini_with_fallback(prompt)
-    if response:
-        return response.text
-    return None
-
-from agent_analyst.llm_client import get_gemini_response
-
-def call_gemini_with_fallback(prompt):
-    # Use full resource names for v1beta
-    candidate_models = [
-        "gemini-2.0-flash-lite-001",
-        "gemini-flash-latest",
-        "gemini-2.0-flash",
-        "gemini-pro-latest"
-    ]
-    
-    for model_name in candidate_models:
-        print(f"Trying model: {model_name}...")
-        
-        # Determine strict model ID for APIURL if needed, but 'gemini-1.5-flash' usually works as alias
-        # Let's try the alias first.
-        
-        # Enforce JSON output for content generation
-        data = get_gemini_response(prompt, model_name, generation_config={"response_mime_type": "application/json"})
-        if data:
-            # Parse response structure
-            try:
-                # Structure: candidates[0].content.parts[0].text
-                text = data["candidates"][0]["content"]["parts"][0]["text"]
-                
-                # Mock a response object to match previous interface expected by caller
-                class MockResponse:
-                    def __init__(self, text):
-                        self.text = text
-                return MockResponse(text)
-                
-            except (KeyError, IndexError) as e:
-                print(f"Failed to parse response from {model_name}: {e}")
-                continue
-                
-    return None
+    return llm_client.generate_content(prompt)
 
 def clean_json_text(text):
     text = text.strip()
@@ -249,15 +209,14 @@ def inject_products(draft, keywords):
 </div>
 """
 
-    # Wrap in markers for easy removal (e.g. for Qiita)
-    # Ensure tighter spacing so Markdown parsers don't treat it as a code block
     wrapped_products = f"\n<!-- AFFILIATE_START -->\n{products_html}\n<!-- AFFILIATE_END -->\n"
     return draft.replace("{{RECOMMENDED_PRODUCTS}}", wrapped_products).replace("{RECOMMENDED_PRODUCTS}", wrapped_products)
 
 def append_footer_content(article, x_post):
     # Add Affiliate Campaign
+    ads = load_ads()
     try:
-        ad = random.choice(AD_CAMPAIGNS)
+        ad = random.choice(ads)
         article += f"\n\n---\n### PR\n{ad['html']}"
     except: pass
 
@@ -275,7 +234,7 @@ def generate_zenn_frontmatter(title, tool_name, source):
     if source == "github": topics.append("GitHub")
     if "python" in tool_name.lower(): topics.append("Python")
     
-    is_published = os.getenv("ZENN_AUTO_PUBLISH", "false").lower() == "true"
+    is_published = config.ZENN_AUTO_PUBLISH
     
     frontmatter = f"""---
 title: "{title}"
@@ -289,14 +248,14 @@ published: {str(is_published).lower()}
     return frontmatter
 
 def load_history():
-    history_path = os.path.join(os.path.dirname(__file__), "..", "data", "history.json")
+    history_path = os.path.join(config.DATA_DIR, "history.json")
     if os.path.exists(history_path):
         with open(history_path, 'r', encoding='utf-8') as f:
             return json.load(f)
     return []
 
 def save_to_history(tool_name, url):
-    history_path = os.path.join(os.path.dirname(__file__), "..", "data", "history.json")
+    history_path = os.path.join(config.DATA_DIR, "history.json")
     history = load_history()
     history.append({
         "name": tool_name,
@@ -308,13 +267,9 @@ def save_to_history(tool_name, url):
     with open(history_path, 'w', encoding='utf-8') as f:
         json.dump(history, f, indent=2, ensure_ascii=False)
 
-import string
-
-# ... (Imports are fine, keep them)
-
 def load_trends_data():
     """Loads the latest trends JSON file from the data directory."""
-    data_dir = os.path.join(os.path.dirname(__file__), "..", "data")
+    data_dir = config.DATA_DIR
     if not os.path.exists(data_dir):
         return []
     
@@ -330,8 +285,6 @@ def load_trends_data():
 
 def select_best_candidate(data):
     """Selects the best tool to write about, considering history and diversity."""
-    # 1. Filter usable items (Stars > 0)
-    # 2. Apply Cooldown (Exclude if posted in last 14 days)
     history = load_history()
     cooldown_period = timedelta(days=14)
     cutoff_date = datetime.now() - cooldown_period
@@ -355,7 +308,7 @@ def select_best_candidate(data):
     if not candidates:
         return None
 
-    # 3. Ensure Source Diversity (Pick top 2 from each source)
+    # Ensure Source Diversity (Pick top 2 from each source)
     candidates_by_source = {}
     for item in candidates:
         src = item.get('source', 'unknown')
@@ -370,7 +323,6 @@ def select_best_candidate(data):
         
     logger.info(f"Candidate Poll Size: {len(final_pool)} (Sources: {list(candidates_by_source.keys())})")
     
-    # 4. Pick Random Winner
     return random.choice(final_pool)
 
 def save_article_file(content, tool_data):
@@ -381,10 +333,9 @@ def save_article_file(content, tool_data):
 
     # Generate random 14-char slug
     slug = ''.join(random.choices(string.ascii_lowercase + string.digits, k=14))
-    articles_dir = os.path.join(os.path.dirname(__file__), "..", "articles")
-    os.makedirs(articles_dir, exist_ok=True)
     
-    file_path = os.path.join(articles_dir, f"{slug}.md")
+    os.makedirs(config.ARTICLES_DIR, exist_ok=True)
+    file_path = os.path.join(config.ARTICLES_DIR, f"{slug}.md")
     
     with open(file_path, 'w', encoding='utf-8') as f:
         f.write(content)
@@ -424,7 +375,7 @@ if __name__ == "__main__":
     
     if "記事生成に失敗しました" in body_content or "Mock content" in body_content:
         logger.error("Article generation failed. Aborting save.")
-        exit(1) # Exit with error code to alert GitHub Actions if needed, or just 0 to skip quietly.
+        exit(1)
     
     # 4. Extract Title & Frontmatter
     article_title = "New AI Tool: " + top_tool['name']
@@ -440,15 +391,11 @@ if __name__ == "__main__":
     filepath_ja = save_article_file(final_content, top_tool)
     
     # 6. Generate & Save English Version
-    # Strip Zenn frontmatter for translation to avoid confusion
     body_only = body_content
     logger.info("Translating article to English...")
     
     en_body = translate_article_to_english(body_only)
     if en_body:
-        # Create English Frontmatter (Hugo compatible)
-        # Note: Zenn frontmatter is not needed for English, but we use a generic md format
-        # We will fix frontmatter more properly in distributor, but here we just need content.
         en_content = f"""---
 title: "{article_title} (English)"
 emoji: "🤖"
@@ -459,14 +406,9 @@ published: false
 
 {en_body}
 """
-        # Save as .en.md in a separate directory to satisfy Zenn slug rules
         filename_en = os.path.basename(filepath_ja).replace(".md", ".en.md")
-        
-        # New valid location for EN files
-        en_articles_dir = os.path.join(os.path.dirname(os.path.dirname(filepath_ja)), "data", "articles_en")
-        os.makedirs(en_articles_dir, exist_ok=True)
-        
-        filepath_en = os.path.join(en_articles_dir, filename_en)
+        os.makedirs(config.EN_ARTICLES_DIR, exist_ok=True)
+        filepath_en = os.path.join(config.EN_ARTICLES_DIR, filename_en)
         
         with open(filepath_en, 'w', encoding='utf-8') as f:
             f.write(en_content)
