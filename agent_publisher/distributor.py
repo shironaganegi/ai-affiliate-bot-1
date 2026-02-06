@@ -221,14 +221,32 @@ def main():
     except Exception as e:
         print(f"Failed to process Qiita distribution: {e}")
     
-    # 2. Post to BlueSky (JA only)
+    # 2. Post to BlueSky (JA)
     try:
         bsky_text = f"📝 新しい記事を書きました！\n\n{title}\n\n#AI #Tech #Zenn\n{zenn_url}"
         post_to_bluesky(bsky_text)
     except Exception as e:
         print(f"Failed to process BlueSky distribution: {e}")
 
-    # 3. Save to Hugo Website (JA)
+    # 3. Post to X (Using Viral Post Content if available)
+    try:
+        from agent_publisher.x_publisher import post_to_x
+        
+        # Extract X Post from article body
+        x_post_match = re.search(r'---X_POST_START---([\s\S]*?)---X_POST_END---', body)
+        if x_post_match:
+            x_viral_text = x_post_match.group(1).strip()
+            print("Found viral X post content.")
+            post_to_x(custom_text=x_viral_text, article_url=zenn_url)
+        else:
+            print("No viral X post content found. Fallback to title.")
+            fallback_text = f"📝 新着記事: {title}\n\n#AI #Tech\n{zenn_url}"
+            post_to_x(custom_text=fallback_text)
+            
+    except Exception as e:
+        print(f"Failed to process X distribution: {e}")
+
+    # 4. Save to Hugo Website (JA)
     try:
         save_hugo_article(title, body, zenn_url, latest_ja_path, lang="ja")
     except Exception as e:
