@@ -291,8 +291,9 @@ def main():
         logger.error(f"Failed to generate Hugo article (JA): {e}")
 
     # 4. Process English Article (If exists)
-    # Ensure we look for .en.md corresponding to the latest .md
-    latest_en_path = latest_ja_path.replace(".md", ".en.md")
+    # Ensure we look for .en.md corresponding to the latest .md in data/articles_en
+    filename_en = os.path.basename(latest_ja_path).replace(".md", ".en.md")
+    latest_en_path = os.path.join(os.path.dirname(os.path.dirname(latest_ja_path)), "data", "articles_en", filename_en)
     
     if os.path.exists(latest_en_path):
         print(f"Found English translation: {latest_en_path}")

@@ -459,9 +459,14 @@ published: false
 
 {en_body}
 """
-        # Save as .en.md
+        # Save as .en.md in a separate directory to satisfy Zenn slug rules
         filename_en = os.path.basename(filepath_ja).replace(".md", ".en.md")
-        filepath_en = os.path.join(os.path.dirname(filepath_ja), filename_en)
+        
+        # New valid location for EN files
+        en_articles_dir = os.path.join(os.path.dirname(os.path.dirname(filepath_ja)), "data", "articles_en")
+        os.makedirs(en_articles_dir, exist_ok=True)
+        
+        filepath_en = os.path.join(en_articles_dir, filename_en)
         
         with open(filepath_en, 'w', encoding='utf-8') as f:
             f.write(en_content)
