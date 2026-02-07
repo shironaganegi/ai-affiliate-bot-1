@@ -11,9 +11,16 @@ Product Info:
 - Feedback: {failure_context}
 
 Requirements for "article":
-1. Structure: Title, Intro, Features, Install, Pros/Cons, Conclusion.
-2. Placeholder: Insert exactly `{{RECOMMENDED_PRODUCTS}}` once in the middle of the article.
-3. PR Notice: The very first line after the title must be `> ※本記事はプロモーションを含みます`.
+1. Title: MUST be in JAPANESE, but include the English product name. Make it catchy for engineers (e.g., containing keywords like "Introduction", "Summary", "Impact").
+2. PR Notice: The very first line after the title must be exactly:
+:::message
+本記事はプロモーションを含みます
+:::
+3. Structure: Title, Intro, Features, **Engineer's Viewpoint** (Your original analysis, comparison, or challenges), Install/Usage, Pros/Cons, Conclusion.
+4. Content:
+    - **Links**: actively cite official blogs, papers, or repositories using `[Title](URL)`.
+    - **Engineer's Perspective**: In the new section, discuss specific utility, comparison with other tools, or challenges in a Japanese environment.
+5. Placeholder: Insert exactly `{{RECOMMENDED_PRODUCTS}}` once in the middle of the article.
 
 Requirements for "x_viral_post":
 - Length: Around 200 characters (Longer than before).

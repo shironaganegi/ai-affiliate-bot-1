@@ -89,7 +89,7 @@ def generate_article(tool_data, x_hot_words=[]):
     )
 
     if not config.GEMINI_API_KEY:
-        return f"# {name}\n> ※本記事はプロモーションを含みます\nMock content.\n{{{{RECOMMENDED_PRODUCTS}}}}"
+        return f"# {name}\n:::message\n本記事はプロモーションを含みます\n:::\nMock content.\n{{{{RECOMMENDED_PRODUCTS}}}}"
 
     # 2. Call Gemini
     # Force JSON mode to prevent preamble text
@@ -232,7 +232,8 @@ def append_footer_content(article, x_post, note_intro=""):
     ads = load_ads()
     try:
         ad = random.choice(ads)
-        article += f"\n\n---\n### PR\n{ad['html']}"
+        # Use Zenn message block for cleaner ad separation
+        article += f"\n\n:::message\n**おすすめのサービス (PR)**\n\n{ad['html']}\n:::\n"
     except: pass
 
     # Add Hidden X Post
