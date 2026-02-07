@@ -15,16 +15,17 @@ class DiscordPublisher:
 
         embed = {
             "title": "📝 新しい記事を公開しました",
+            "url": zenn_url,
             "description": f"[{title}]({zenn_url})",
             "color": 3447003, # Blue
             "fields": [
                 {
-                    "name": "X (Twitter) Post",
-                    "value": f"```\n{x_post_text}\n```"
+                    "name": "X (Twitter) Post (Copy & Paste)",
+                    "value": f"```\n{x_post_text}\n\n{zenn_url}\n```"
                 },
                 {
-                    "name": "Note Post (Intro)",
-                    "value": f"```\n{note_post_text}\n```"
+                    "name": "Note Post (Intro) (Copy & Paste)",
+                    "value": f"```\n{note_post_text}\n\n{zenn_url}\n```"
                 }
             ],
             "footer": {

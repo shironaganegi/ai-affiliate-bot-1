@@ -50,10 +50,17 @@ class QiitaPublisher:
         # 2. Remove Affiliate Product Injection
         body = re.sub(r'<!-- AFFILIATE_START -->[\s\S]*?<!-- AFFILIATE_END -->', '', body)
         
-        # 3. Remove "Promotion" disclaimer
-        body = re.sub(r'> ※本記事はプロモーションを含みます\n?', '', body)
+        # 3. Remove "Promotion" disclaimer if exact match, or convert message blocks to quotes
+        # Convert :::message to blockquotes
+        def message_to_quote(match):
+            content = match.group(1)
+            # Prefix each line with >
+            quoted = "\n".join([f"> {line}" for line in content.strip().split("\n")])
+            return f"\n{quoted}\n"
+            
+        body = re.sub(r':::message\n([\s\S]*?)\n:::', message_to_quote, body)
         
         # 5. Add canonical link
-        footer = f"\n\n---\n\n:::note\nこの記事は [Zennで公開された記事]({zenn_url}) の転載です。\n最新情報や詳細な設定方法はZennをご覧ください。\n:::\n"
+        footer = f"\n\n---\n\n> この記事は [Zennで公開された記事]({zenn_url}) の転載です。\n> 最新情報や詳細な設定方法はZennをご覧ください。\n"
         
         return body + footer

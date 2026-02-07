@@ -134,6 +134,9 @@ def translate_article_to_english(content):
     """
     Translates the Japanese Markdown content to English using Gemini.
     """
+    # Pre-processing: Remove Zenn-specific blocks (PR notices etc)
+    content = re.sub(r':::message[\s\S]*?:::\n?', '', content)
+
     prompt = f"""
     You are a professional Tech Translator.
     Translate the following Japanese Markdown blog post into high-quality English.

@@ -35,6 +35,16 @@ canonicalUrl = "{zenn_url}"{cover_yaml}
         # Clean body for Hugo
         hugo_body = body.replace("<!-- AFFILIATE_START -->", "").replace("<!-- AFFILIATE_END -->", "")
         hugo_body = re.sub(r'---X_POST_START---[\s\S]*?---X_POST_END---\n?', '', hugo_body)
+        hugo_body = re.sub(r'---NOTE_INTRO_START---[\s\S]*?---NOTE_INTRO_END---\n?', '', hugo_body)
+
+        # Convert Zenn syntax (:::message) to blockquotes
+        def message_to_quote(match):
+            content = match.group(1)
+            # Prefix each line with >
+            quoted = "\n".join([f"> {line}" for line in content.strip().split("\n")])
+            return f"\n{quoted}\n"
+            
+        hugo_body = re.sub(r':::message\n([\s\S]*?)\n:::', message_to_quote, hugo_body)
         
         if lang == "ja":
             footer = f"\n\n---\n\n> この記事は [Zenn]({zenn_url}) にも投稿されています。\n"
