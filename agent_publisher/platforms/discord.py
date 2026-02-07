@@ -17,6 +17,7 @@ class DiscordPublisher:
             "title": "📝 新しい記事を公開しました",
             "description": f"[{title}]({zenn_url})",
             "color": 3447003, # Blue
+            "fields": [
                 {
                     "name": "X (Twitter) Post",
                     "value": f"```\n{x_post_text}\n```"
