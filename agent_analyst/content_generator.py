@@ -201,12 +201,8 @@ def inject_products(draft, keywords):
     # Inject a static internal affiliate link or a reliable banner
     if not products_html:
         products_html = """
-<div class="rakuten-item" style="border:1px solid #ddd; padding:15px; margin:20px 0; border-radius:8px; text-align:center;">
-    <p style="color:#666; font-size:0.9em; margin-bottom:10px;">👇 エンジニアにおすすめのサービス 👇</p>
-    <a href="https://www.onamae.com/" target="_blank" rel="nofollow" style="font-weight:bold; color:#0055aa; font-size:1.1em; text-decoration:none;">
-        🌐 独自ドメイン取得なら「お名前.com」。TechTrend Watchも使っています！
-    </a>
-</div>
+### 👇 エンジニアにおすすめのサービス 👇
+[**🌐 独自ドメイン取得なら「お名前.com」。TechTrend Watchも使っています！**](https://www.onamae.com/)
 """
 
     wrapped_products = f"\n<!-- AFFILIATE_START -->\n{products_html}\n<!-- AFFILIATE_END -->\n"
