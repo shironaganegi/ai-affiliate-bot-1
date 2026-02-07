@@ -1,4 +1,4 @@
-from atproto import Client
+from atproto import Client, client_utils
 from shared.config import config
 from shared.utils import setup_logging
 
@@ -17,8 +17,26 @@ class BlueSkyPublisher:
         try:
             client = Client()
             client.login(self.handle, self.password)
-            text = f"📝 新しい記事を書きました！\n\n{title}\n\n#AI #Tech #Zenn\n{zenn_url}"
-            client.send_post(text)
+            
+            # Use TextBuilder to create rich text with facets (links, hashtags)
+            tb = client_utils.TextBuilder()
+            
+            # "📝 新しい記事を書きました！" (plain text)
+            tb.text("📝 新しい記事を書きました！\n\n")
+            
+            # Title (plain text)
+            tb.text(f"{title}\n\n")
+            
+            # Hashtags
+            tb.tag("#AI", "AI").text(" ")
+            tb.tag("#Tech", "Tech").text(" ")
+            tb.tag("#Zenn", "Zenn").text("\n\n")
+            
+            # Link to the article
+            # Using the title or "記事を読む" as the link text, linking to zenn_url
+            tb.link("👉 記事を読む", zenn_url)
+            
+            client.send_post(tb)
             logger.info("Successfully posted to BlueSky!")
         except Exception as e:
             logger.error(f"BlueSky Error: {e}")
