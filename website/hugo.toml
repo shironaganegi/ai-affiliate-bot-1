@@ -100,7 +100,7 @@ theme = "PaperMod"
 
 [services]
   [services.googleAnalytics]
-    id = "" # Add ID here later
+    id = "G-T3QN96SJXT" # TechTrend Watch
 
 [markup.goldmark.renderer]
   unsafe = true # Allow raw HTML (for affiliate links etc)
