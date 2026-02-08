@@ -30,7 +30,6 @@ class TwitterPublisher:
             post_text = f"🤖 今日のAIトレンド情報をお届け！\n\n詳細はZennブログで公開予定です！\n\n#AI #Tech\n{article_url or ''}"
 
         try:
-        try:
             # Threading Logic
             tweets = []
             
