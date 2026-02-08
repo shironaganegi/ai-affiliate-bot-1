@@ -61,6 +61,6 @@ class QiitaPublisher:
         body = re.sub(r':::message\n([\s\S]*?)\n:::', message_to_quote, body)
         
         # 5. Add canonical link
-        footer = f"\n\n---\n\n> この記事は [Zennで公開された記事]({zenn_url}) の転載です。\n> 最新情報や詳細な設定方法はZennをご覧ください。\n"
+        footer = f"\n\n---\n\n> この記事は [TechTrend Watch]({zenn_url}) で公開された記事の転載です。\n> 最新情報や詳細な技術トレンドは公式サイトをご覧ください。\n"
         
         return body + footer

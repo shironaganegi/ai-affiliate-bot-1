@@ -47,9 +47,11 @@ canonicalUrl = "{zenn_url}"{cover_yaml}
         hugo_body = re.sub(r':::message\n([\s\S]*?)\n:::', message_to_quote, hugo_body)
         
         if lang == "ja":
-            footer = f"\n\n---\n\n> この記事は [Zenn]({zenn_url}) にも投稿されています。\n"
+            # No footer needed for main site (or maybe affiliate disclaimer if wanted)
+            footer = "" 
         else:
-            footer = f"\n\n---\n\n> This article was originally published on [Zenn]({zenn_url}) (Japanese).\n"
+            footer = f"\n\n---\n\n> This article is also available in [Japanese]({zenn_url}).\n" # Actually zenn_url is now website_url so this links to JA version on same site
+
         
         output_path = os.path.join(config.WEBSITE_CONTENT_DIR, target_filename)
         with open(output_path, 'w', encoding='utf-8') as f:

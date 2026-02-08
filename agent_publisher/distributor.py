@@ -52,9 +52,9 @@ def main():
     
     logger.info(f"Processing (JA): {title}")
 
-    # 1. Qiita (Use Zenn URL as canonical for now)
+    # 1. Qiita (Use Website URL as canonical)
     qiita = QiitaPublisher()
-    qiita.publish(title, body, zenn_url)
+    qiita.publish(title, body, website_url)
 
     # 2. BlueSky (Use Website URL for traffic)
     bsky = BlueSkyPublisher()
@@ -64,9 +64,9 @@ def main():
     twitter = TwitterPublisher()
     twitter.publish(custom_text=x_viral_text, article_url=website_url)
 
-    # 4. Hugo (JA) (Pass Zenn URL for canonical/footer ref)
+    # 4. Hugo (JA) (Pass Website URL for canonical/footer ref - no backlink needed)
     hugo = HugoPublisher()
-    hugo.save_article(title, body, zenn_url, latest_ja_path, lang="ja")
+    hugo.save_article(title, body, website_url, latest_ja_path, lang="ja")
 
     # 5. Hugo (EN)
     filename_en = os.path.basename(latest_ja_path).replace(".md", ".en.md")
@@ -82,7 +82,8 @@ def main():
             en_title = en_title_match.group(1) if en_title_match else title
             en_body = re.sub(r'^---[\s\S]*?---\n', '', en_content)
             
-            hugo.save_article(en_title, en_body, zenn_url, latest_en_path, lang="en")
+            # Pass website_url for EN canonical too
+            hugo.save_article(en_title, en_body, website_url, latest_en_path, lang="en")
         except Exception as e:
              logger.error(f"Failed to generate Hugo article (EN): {e}")
     else:

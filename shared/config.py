@@ -26,7 +26,7 @@ class Config:
     X_ACCESS_SECRET: str = os.getenv("X_ACCESS_SECRET", "")
     
     # Feature Flags
-    ZENN_AUTO_PUBLISH: bool = os.getenv("ZENN_AUTO_PUBLISH", "false").lower() == "true"
+    ZENN_AUTO_PUBLISH: bool = os.getenv("ZENN_AUTO_PUBLISH", "true").lower() == "true"
     
     # Paths
     BASE_DIR: str = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
